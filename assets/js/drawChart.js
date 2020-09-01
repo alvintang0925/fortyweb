@@ -78,7 +78,6 @@ function drawChart(best_answer, stock){
 
             dataset.push({
                 label : "best : " + best_answer.company_name,
-                    // lineTension : 1,
                     backgroundColor : "#FFD9EC",
                     borderColor : "#FF0000",
                     borderWidth : 3,
