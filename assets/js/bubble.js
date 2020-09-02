@@ -47,6 +47,8 @@ function sendBubble(){
             }
         }
     }
+    var bubble_send = document.getElementById("bubble_send");
+    bubble_send.play();
     select_bubble_add = [];
     select_bubble = [];
 }  
@@ -75,6 +77,8 @@ function dragend(d, i) {
 
 function clicked(d, i){
     if (d3.event.defaultPrevented) return; // dragged
+    var bubble_click = document.getElementById("bubble_click");
+    bubble_click.play();
     if(!(d.selected)){
         d3.select(this).transition()
         .duration(700)    

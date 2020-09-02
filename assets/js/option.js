@@ -1,5 +1,6 @@
 function selectALL(){
-
+    var bubble_click = document.getElementById("bubble_click");
+    bubble_click.play();
     for(var j = 0; j < nodes.length; j++){
         if(nodes[j].selected == false){
             d3.select(images[0][j]).transition()
@@ -21,8 +22,9 @@ function selectALL(){
 }
 
 function resetAll(){
-    console.log(bubble_list);
+    var bubble_reset = document.getElementById("bubble_reset");
     force.stop();
+    bubble_reset.play();
     for(var j = 0; j < bubble_list.length; j++){
         
         bubble_list[j].selected = false;
