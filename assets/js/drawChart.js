@@ -119,11 +119,20 @@ function selectButton(e){
                                 display: true,
                                 position: 'left',
                                 id: 'y-axis-1',
+                                ticks: {
+                                    // min: parseInt(FUNDS) ,
+                                    max: best_answer.dMoney * 1.5,
+                                },
+                                
                             }, {
                                 type: 'linear', 
                                 display: true,
                                 position: 'right',
                                 id: 'y-axis-2',
+                                // ticks: {
+                                //     min: parseInt(FUNDS) ,
+                                //     max: best_answer.totalMoney[best_answer.totalMoney.length-1],
+                                // },
 
                                 // grid line settings
                                 gridLines: {
