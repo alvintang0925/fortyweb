@@ -13,6 +13,8 @@ function start(){
     bar_chart = new Chart(ctx2,{});
     best_line_chart = bar_chart = new Chart(ctx2,{});
     showBubble();
+
+    
 }
 
 window.addEventListener("load", start, false);

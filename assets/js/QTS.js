@@ -259,7 +259,22 @@ function countFunds(){
             
 
             console.log(best_answer);
-            drawChart(best_answer, stock);
+            if (window.localStorage) {
+                localStorage.best_answer = JSON.stringify(best_answer);
+                localStorage.stock_length = stock.length;
+                for(var j = 0; j < stock.length; j++){
+                    var temp = "stock" + j;
+                    localStorage[temp] = JSON.stringify(stock[j]);
+                }
+                localStorage.company_name_length = company_name.length;
+                for(var j = 0; j < company_name.length; j++){
+                    var temp = "company_name" + j;
+                    localStorage[temp] = JSON.stringify(company_name[j]);
+                }
+                window.location.href = 'chart.html';//'https://alvintang0925.github.io/fortyweb/qts.html';
+            } else {
+                console.log("NOT SUPPORT");
+            }
                         
         });
     }
