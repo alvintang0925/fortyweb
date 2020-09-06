@@ -47,16 +47,7 @@ function selectButton(e){
 
     switch(e.value){
         case "PORTFOLIO":
-            dataset.push({
-                label : "趨勢線",
-                    lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
-                    borderWidth : 1,
-                    data: best_answer.y_line,
-                    fill : false,
-                    yAxisID: 'y-axis-2',
-            });
+
             color = getRandomColor();
             dataset.push({
                     label : "best : " + best_answer.company_name,
@@ -65,11 +56,24 @@ function selectButton(e){
                     borderColor : "#FF0000",
                     borderWidth : 3,
                     data: best_answer.totalMoney,
-                    fill : "-1",
+                    fill : "1",
                     yAxisID: 'y-axis-2',
                 });
-
+            dataset.push({
+                label : "趨勢線",
+                    lineTension : 0,
+                    backgroundColor : color,
+                    borderColor : color,
+                    borderWidth : 1,
+                    data: best_answer.y_line,
+                    fill : false,
+                    pointRadius : 0,
+                    yAxisID: 'y-axis-2',
+            });
             for(var j = 0; j < best_answer.counter; j++){
+                var myIcon = [];
+                var myImage = new Image(15,15);
+                myImage.src = "img/" + company_name[best_answer.locate[j]] + ".png";
                 color = getRandomColor();
                 dataset.push({
                     label : company_name[best_answer.locate[j]],
@@ -82,6 +86,7 @@ function selectButton(e){
                     fill : false,
                     pointRadius: 1,
                     yAxisID: 'y-axis-1',
+                    pointStyle: myImage,
                 });
             } 
 
@@ -98,6 +103,9 @@ function selectButton(e){
                         responsive: true,
                         legend:{
                             display: true,
+                            labels:{
+                                usePointStyle : true,
+                            },
                         },
                         tooltips: {
                             enabled: true
@@ -124,7 +132,7 @@ function selectButton(e){
                             }]
                         },
 
-                    }
+                    },
             });
             break;
         case "FUND":

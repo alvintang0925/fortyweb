@@ -2503,6 +2503,7 @@ input, select, textarea {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
+	input[type="month"],
 	button,
 	.button {
 		-moz-appearance: none;
