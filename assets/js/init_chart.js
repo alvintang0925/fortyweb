@@ -1,4 +1,4 @@
-var best_answer;
+var exp_best_answer;
 var stock = [];
 var company_name = [];
 var DAYNUMBER;

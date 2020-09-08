@@ -51,7 +51,7 @@
 				<!-- Note: The "styleN" class below should match that of the header element. -->
 					<section id="innner" class="style2">
 						<div id="root">
-                            <svg width="100%" height="300px" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid"></svg>
+                            <svg width="100%" height="700px" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid"></svg>
                             <audio id="bubble_click">
                                 <source = src="mp3/bubble_click.mp3" type="audio/mp3">
                             </audio>
@@ -73,42 +73,52 @@
                                     <section>
                                         <form>
                                             <div class = "fields">
-                                                <div class = "field half">
+                                                <div class = "field third">
                                                     <input type = "button" class = "button" value="重設" id = "resetButton">
                                                 </div>
-                                                <div class = "field half">
+                                                <div class = "field third">
                                                     <input type = "button" value="全選" id = "allButton">
+                                                </div>
+                                                <div class = "field third">
+                                                    <input type = "button" value="送出" id = "sendButton">
                                                 </div>
                                             </div>
                                             <div class = "fields">
-                                                <div class = "field half">
+                                                <div class = "field quarter">
                                                     <label for="name">旋轉角度</label>
                                                     <input type = "text" value="0.0004" id = "delta">
                                                 </div>
-                                                <div class = "field half">
+                                                <div class = "field quarter">
                                                     <label for="name">執行次數</label>
                                                     <input type = "text" value="10000" id = "runtimes">
                                                 </div>
-                                            </div>
-                                            <div class = "fields">
-                                                <select name = "qts" id = "qts_list">
-                                                    <option value = "QTS">QTS</option>
-                                                    <option value = "GQTS">GQTS</option>
-                                                    <option value = "GNQTS" selected>GNQTS</option>
-                                                </select>
-                                            </div>
-                                            <div class = "fields">
-                                                <div class = "field half">
-                                                    <label for="name">開始月份</label>
-                                                    <input type="month" min="2009-12" max = "2019-11" value = "2019-06" id="start_month" />
+                                                <div class = "field quarter">
+                                                    <label for="name">粒子數</label>
+                                                    <input type = "text" value="10" id = "stock_number">
                                                 </div>
-                                                <div class = "field half">
-                                                    <label for="name">結束月份</label>
-                                                    <input type="month" min="2010-01" max = "2019-12" value = "2019-06" id="end_month" />
+                                                <div class = "field quarter">
+                                                    <label for="name">實驗次數</label>
+                                                    <input type = "text" value="5" id = "exp_number">
                                                 </div>
                                             </div>
                                             <div class = "fields">
-                                                <input type = "button" value="送出" id = "sendButton">
+                                                <div class = "field quarter">
+                                                    <select name = "qts" id = "qts_list">
+                                                        <option value = "QTS">QTS</option>
+                                                        <option value = "GQTS">GQTS</option>
+                                                        <option value = "GNQTS" selected>GNQTS</option>
+                                                    </select>
+                                                </div>
+                                                <div class = "field quarter">
+                                                    
+                                                        <label for="name">開始月份</label>
+                                                        <input type="month" min="2009-12" max = "2019-11" value = "2019-06" id="start_month" />
+                                                </div>
+                                                <div class = "field quarter">
+                                                        <label for="name">結束月份</label>
+                                                        <input type="month" min="2010-01" max = "2019-12" value = "2019-06" id="end_month" />
+                                                    
+                                                </div>
                                             </div>
                                         </form>
                                     </section>

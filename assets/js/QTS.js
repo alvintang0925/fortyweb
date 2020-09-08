@@ -1,6 +1,7 @@
 var FUNDS = 10000000;
 var DAYNUMBER;
-var STOCKNUMBER = 10;
+var STOCKNUMBER;
+var EXPNUMBER;
 var QTSTYPE = 2; //QTS 0, GQTS 1, GNQTS
 var RUNTIMES;
 var DELTA;
@@ -105,6 +106,8 @@ function countFunds(){
             QTSTYPE = document.getElementById("qts_list").value;
             DELTA = parseFloat(document.getElementById("delta").value);
             RUNTIMES = parseInt(document.getElementById("runtimes").value);
+            STOCKNUMBER = parseInt(document.getElementById("stock_number").value);
+            EXPNUMBER = parseInt(document.getElementById("exp_number").value);
 
             for(var j = 0; j < bubble_list.length; j++){
                     s_company[j] = bubble_list[j].idx;
@@ -120,6 +123,8 @@ function countFunds(){
                 }
                 c++;
             }
+
+
             var stock = [];
     
             for(var j = 0; j < COMPANYNUMBER; j++){
@@ -144,123 +149,139 @@ function countFunds(){
 
             stock = countTrend(stock);
 
-            var best_answer = new STOCK();
 
-            var worst_answer = new STOCK();
-
-            best_answer.trend = 0;
-
-            for(var j = 0; j < COMPANYNUMBER; j++){
-                best_answer.data[j] = 0;
-            }
-            worst_answer.trend = 10000;
-
-            var change_number = [];
-            for(var j = 0; j < COMPANYNUMBER; j++){
-                change_number[j] = 0.5;
-            }
+            var exp_best_answer = new STOCK();
+            exp_best_answer.trend = 0;
             
-            for(var i = 0; i < RUNTIMES; i++){
-                for(var j = 0; j< COMPANYNUMBER; j++){
-                    change_number[j] = Math.floor(change_number[j] * 1000) / 1000;
-                }
-                
-                var r_stock = [];
-        
-                for(var j = 0; j < STOCKNUMBER; j++){
-                    r_stock[j] = new STOCK();
 
-                    for(var k = 0; k < DAYNUMBER; k++){
-                        r_stock[j].totalMoney[k] = 0;
+            for(var n = 0; n < EXPNUMBER; n++){
+            
+                var best_answer = new STOCK();
+
+                var worst_answer = new STOCK();
+
+                best_answer.trend = 0;
+
+                for(var j = 0; j < COMPANYNUMBER; j++){
+                    best_answer.data[j] = 0;
+                }
+                worst_answer.trend = 10000;
+
+                var change_number = [];
+                for(var j = 0; j < COMPANYNUMBER; j++){
+                    change_number[j] = 0.5;
+                }
+
+                for(var i = 0; i < RUNTIMES; i++){
+                    for(var j = 0; j< COMPANYNUMBER; j++){
+                        change_number[j] = Math.floor(change_number[j] * 1000) / 1000;
+                    }
+                    
+                    var r_stock = [];
+            
+                    for(var j = 0; j < STOCKNUMBER; j++){
+                        r_stock[j] = new STOCK();
+
+                        for(var k = 0; k < DAYNUMBER; k++){
+                            r_stock[j].totalMoney[k] = 0;
+                        }
+
+                        for(var k = 0; k < COMPANYNUMBER; k++){
+                            var r = Math.random();
+
+                            if(r > change_number[k]){
+                                r_stock[j].data[k] = 0;
+                            }else{
+                                r_stock[j].data[k] = 1;
+                                if(r_stock[j].counter != 0){
+                                    r_stock[j].company_name += ", ";
+                                }
+                                r_stock[j].company_name += company_name[k];
+                                r_stock[j].locate[r_stock[j].counter] = k;
+                                r_stock[j].counter++;
+                            }
+                        }
+                        r_stock[j].init();
                     }
 
-                    for(var k = 0; k < COMPANYNUMBER; k++){
-                        var r = Math.random();
+                    
 
-                        if(r > change_number[k]){
-                            r_stock[j].data[k] = 0;
-                        }else{
-                            r_stock[j].data[k] = 1;
-                            if(r_stock[j].counter != 0){
-                                r_stock[j].company_name += ", ";
-                            }
-                            r_stock[j].company_name += company_name[k];
-                            r_stock[j].locate[r_stock[j].counter] = k;
-                            r_stock[j].counter++;
+                    r_stock = countTrend(r_stock);
+
+
+                    var good_answer = r_stock[0];
+                    var bad_answer = r_stock[r_stock.length-1];
+                    for(var j = 0; j < STOCKNUMBER; j++){
+                        if(good_answer.trend < r_stock[j].trend){
+                            good_answer = r_stock[j];
+                        }else if(bad_answer > r_stock[j].trend){
+                            bad_answer = r_stock[j];
                         }
                     }
-                    r_stock[j].init();
-                }
 
-                
-
-                r_stock = countTrend(r_stock);
-
-
-                var good_answer = r_stock[0];
-                var bad_answer = r_stock[r_stock.length-1];
-                for(var j = 0; j < STOCKNUMBER; j++){
-                    if(good_answer.trend < r_stock[j].trend){
-                        good_answer = r_stock[j];
-                    }else if(bad_answer > r_stock[j].trend){
-                        bad_answer = r_stock[j];
+                    if(best_answer.trend < good_answer.trend){
+                        
+                        best_answer = good_answer;
+                        console.log("i = ", i);
+                        console.log(best_answer.counter);
+                        console.log(best_answer.trend);
                     }
+                    
+                    if(worst_answer.trend > bad_answer.trend){
+                        worst_answer = bad_answer;
+                    }
+
+                    for(var j = 0; j < COMPANYNUMBER; j++){
+                        
+                        switch(QTSTYPE){
+                            case "QTS":
+                                if(good_answer.data[j] > bad_answer.data[j]){
+                                    change_number[j] += DELTA;
+                                }else if(good_answer.data[j] < bad_answer.data[j]){
+                                    change_number[j] -= DELTA;
+                                }
+                                break;
+                            
+                            case "GQTS":
+                                if(best_answer.data[j] > bad_answer.data[j]){
+                                    change_number[j] += DELTA;
+                                }else if(best_answer.data[j] < bad_answer.data[j]){
+                                    change_number[j] -= DELTA;
+                                }
+                                break;
+                            
+                            case "GNQTS":
+                                if(best_answer.data[j] > bad_answer.data[j]){
+                                    if(change_number[j] < 0.5){
+                                        change_number[j] = 1 - change_number[j];
+                                    }
+                                    change_number[j] += DELTA;
+                                }else if(best_answer.data[j] < bad_answer.data[j]){
+                                    if(change_number[j] > 0.5){
+                                        change_number[j] = 1 - change_number[j];
+                                    }
+                                    change_number[j] -= DELTA;
+                                }
+                                break;
+                        }
+                        
+                    }   
+
                 }
 
-                if(best_answer.trend < good_answer.trend){
-                    
-                    best_answer = good_answer;
+                if(exp_best_answer.trend < best_answer.trend){
+                        
+                    exp_best_answer = best_answer;
                     console.log("i = ", i);
                     console.log(best_answer.counter);
                     console.log(best_answer.trend);
                 }
-                
-                if(worst_answer.trend > bad_answer.trend){
-                    worst_answer = bad_answer;
-                }
-
-                for(var j = 0; j < COMPANYNUMBER; j++){
-                    
-                    switch(QTSTYPE){
-                        case "QTS":
-                            if(good_answer.data[j] > bad_answer.data[j]){
-                                change_number[j] += DELTA;
-                            }else if(good_answer.data[j] < bad_answer.data[j]){
-                                change_number[j] -= DELTA;
-                            }
-                            break;
-                        
-                        case "GQTS":
-                            if(best_answer.data[j] > bad_answer.data[j]){
-                                change_number[j] += DELTA;
-                            }else if(best_answer.data[j] < bad_answer.data[j]){
-                                change_number[j] -= DELTA;
-                            }
-                            break;
-                        
-                        case "GNQTS":
-                            if(best_answer.data[j] > bad_answer.data[j]){
-                                if(change_number[j] < 0.5){
-                                    change_number[j] = 1 - change_number[j];
-                                }
-                                change_number[j] += DELTA;
-                            }else if(best_answer.data[j] < bad_answer.data[j]){
-                                if(change_number[j] > 0.5){
-                                    change_number[j] = 1 - change_number[j];
-                                }
-                                change_number[j] -= DELTA;
-                            }
-                            break;
-                    }
-                    
-                }   
-
             }
             
 
-            console.log(best_answer);
+            console.log(exp_best_answer);
             if (window.localStorage) {
-                localStorage.best_answer = JSON.stringify(best_answer);
+                localStorage.exp_best_answer = JSON.stringify(exp_best_answer);
                 localStorage.stock_length = stock.length;
                 for(var j = 0; j < stock.length; j++){
                     var temp = "stock" + j;
