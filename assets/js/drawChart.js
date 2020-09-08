@@ -91,7 +91,6 @@ function selectButton(e){
             } 
 
             
-
             var bestLineChartData = {
                 labels: day_label,
                 datasets: dataset,
@@ -112,15 +111,33 @@ function selectButton(e){
                         },
                         scales: {
                             xAxes: [{
-                                display: true
+                                display: true,
+                                // type: 'time',
+                                // distribution: 'series',
+                                // offset: true,
+                                // ticks: {
+                                //     major: {
+                                //         enabled: true,
+                                //         fontStyle: 'bold'
+                                //     },
+                                //     source: 'data',
+                                //     autoSkip: true,
+                                //     autoSkipPadding: 75,
+                                //     maxRotation: 0,
+                                //     sampleSize: 100
+                                // },
                             }],
                             yAxes: [{
                                 type: 'linear',
                                 display: true,
                                 position: 'left',
                                 id: 'y-axis-1',
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Stock',
+                                },
                                 ticks: {
-                                    // min: parseInt(FUNDS) ,
+                                    min: parseInt(best_answer.dMoney) ,
                                     max: best_answer.dMoney * 1.5,
                                 },
                                 
@@ -129,11 +146,14 @@ function selectButton(e){
                                 display: true,
                                 position: 'right',
                                 id: 'y-axis-2',
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Portfolio',
+                                },
                                 // ticks: {
                                 //     min: parseInt(FUNDS) ,
                                 //     max: best_answer.totalMoney[best_answer.totalMoney.length-1],
                                 // },
-
                                 // grid line settings
                                 gridLines: {
                                     drawOnChartArea: false, // only want the grid lines for one axis to show up
