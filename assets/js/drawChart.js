@@ -252,6 +252,15 @@ function selectButton(e){
             }
             neg_stock.reverse();
 
+            dataset.push({
+                label : "best : " + exp_best_answer.company_name,
+                backgroundColor : "#FF0000",
+                borderColor : "#FF0000",
+                borderWidth : 1,
+                data: [exp_best_answer.trend],
+                yAxisID: 'y-axis-1',
+            });
+
             for(var j = 0; j < stock.length; j++){
                 color = getRandomColor();
                 dataset.push({
@@ -276,14 +285,7 @@ function selectButton(e){
                 });
             } 
 
-            dataset.push({
-                label : "best : " + exp_best_answer.company_name,
-                backgroundColor : "#FF0000",
-                borderColor : "#FF0000",
-                borderWidth : 1,
-                data: [exp_best_answer.trend],
-                yAxisID: 'y-axis-1',
-            });
+            
 
             var barChartData = {
                 datasets: dataset,
@@ -316,6 +318,10 @@ function selectButton(e){
                                     min: bar_min,
                                     max: bar_max,
                                 },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Positive Stock',
+                                },
                                 id: 'y-axis-1',
                             }, {
                                 type: 'linear', 
@@ -324,6 +330,10 @@ function selectButton(e){
                                 ticks: {
                                     min: neg_bar_min,
                                     max: neg_bar_max,
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Negative Stock',
                                 },
                                 id: 'y-axis-2',
                                 // grid line settings
