@@ -6,11 +6,17 @@ function selectALL(){
             d3.select(images[0][j]).transition()
             .duration(700)    
             .ease("bounce")
+            .attr("x", function(d){return d.x - d.r * 1.5;})
+            .attr("y", function(d){return d.y - d.r * 1.5;})
             .attr("width", function(d){return d.r * 1.5 * 2;})
             .attr("height", function(d){return d.r * 1.5 * 2;})
             .each("start",function(d){
-                d.r *= 1.5;
                 d.selected = true;
+                d.fixed = true;
+                d.r *= 1.5;
+            })
+            .each("end",function(d){
+                d.fixed = false;
             });
             
             
@@ -18,25 +24,52 @@ function selectALL(){
             select_bubble_add.push(images[0][j]);
         }
     }
+    console.log(select_bubble);
 
 }
 
 function resetAll(){
     var bubble_reset = document.getElementById("bubble_reset");
-    force.stop();
     bubble_reset.play();
-    for(var j = 0; j < bubble_list.length; j++){
+
+    // force.stop();
+    // for(var j = 0; j < bubble_list.length; j++){
         
-        bubble_list[j].selected = false;
-        bubble_list[j].r = 20;
-        bubble_list[j].company = all_company_name[bubble_list[j].idx];
-        nodes.push(bubble_list[j]);
-        images[0].push(bubble_list_add[j]);
+    //     bubble_list[j].selected = false;
+    //     bubble_list[j].r = 20;
+    //     bubble_list[j].company = all_company_name[bubble_list[j].idx];
+    //     nodes.push(bubble_list[j]);
+    //     images[0].push(bubble_list_add[j]);
         
+    // }
+    // force.resume();
+    // bubble_list = [];
+    // bubble_list_add = [];
+
+    for(var j = 0; j < nodes.length; j++){
+        if(nodes[j].selected == true){
+            d3.select(images[0][j]).transition()
+            .duration(700)    
+            .ease("bounce")
+            .attr("x", function(d){return d.x - d.r / 1.5;})
+            .attr("y", function(d){return d.y - d.r / 1.5;})
+            .attr("width", function(d){return d.r / 1.5 * 2;})
+            .attr("height", function(d){return d.r / 1.5 * 2;})
+            .each("start",function(d){
+                d.selected = false;
+                d.fixed = true;
+                d.r /= 1.5;
+            })
+            .each("end",function(d){
+                d.fixed = false;
+            });
+            
+            
+            select_bubble = [];
+            select_bubble_add = [];
+        }
     }
-    force.resume();
-    bubble_list = [];
-    bubble_list_add = [];
+    console.log(select_bubble);
 }
 
 
@@ -45,6 +78,7 @@ function temp(fn, c){
         d3.csv(fn, function(d){
                 data = data.concat(d);
                 c++;
+                
                 temp(filename[c],c);
         });
     }
@@ -89,6 +123,7 @@ function preset(){
         }
     }
     sendBubble();
+    setTimeout(function(){$('#loading').show();}, 1000);
     
     temp(filename[0], 0)
     

@@ -1,7 +1,8 @@
 var myChart;
 var ctx;
 function selectButton(e){
-
+    // myDiv.innerHTML = "";
+    
     var myButton = document.getElementsByName("button");
     for(var j = 0; j < myButton.length; j++){
         myButton[j].setAttribute("style", "");
@@ -11,23 +12,7 @@ function selectButton(e){
     var myCanvas = document.getElementById("canvas");
     myCanvas.setAttribute("style", "background-color:white;")
 
-    if(window.localStorage){
-        exp_best_answer = JSON.parse(localStorage["exp_best_answer"]);
-        var stock_length = parseInt(localStorage["stock_length"]);
-        for(var j = 0; j < stock_length; j++){
-            var temp = "stock" + j;
-            stock[j] = JSON.parse(localStorage[temp]);
-        }
-        var company_name_length = parseInt(localStorage["company_name_length"]);
-        for(var j = 0; j < company_name_length; j++){
-            var temp = "company_name" + j;
-            company_name[j] = JSON.parse(localStorage[temp]);
-        }
-        DAYNUMBER = exp_best_answer.day;
-        COMPANYNUMBER = company_name.length;
-    }else{
-        console.log("NOT SUPPORT");
-    }
+
 
     myChart.destroy();
     var best_name = "";

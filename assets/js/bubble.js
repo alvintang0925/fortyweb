@@ -83,12 +83,20 @@ function clicked(d, i){
         d3.select(this).transition()
         .duration(700)    
         .ease("bounce")
+        .attr("x", d.x - d.r * 1.5)
+        .attr("y", d.y - d.r * 1.5)
         .attr("width", d.r * 1.5 * 2)
         .attr("height", d.r * 1.5 * 2)
         .each("start",function(){
+            d.selected = true;
+            d.fixed = true;
             d.r *= 1.5;
+        })
+        .each("end",function(){
+
+            d.fixed = false;
         });
-        d.selected = true;
+        
 
         for(var j = 0; j < nodes.length; j++){
             if(nodes[j].idx == d.idx){
@@ -96,22 +104,31 @@ function clicked(d, i){
             }
         }
         select_bubble_add.push(this);
+        console.log(select_bubble);
     }else{
         d3.select(this).transition()
         .duration(700)    
         .ease("bounce")
+        .attr("x", d.x - d.r / 1.5)
+        .attr("y", d.y - d.r / 1.5)
         .attr("width", d.r / 1.5 * 2)
         .attr("height", d.r / 1.5 * 2)
         .each("start",function(){
+            d.selected = false;
+            d.fixed = true;
             d.r /= 1.5;
+        })
+        .each("end",function(){
+            d.fixed = false;
         });
-        d.selected = false;
+        
         for(var j = 0; j < select_bubble.length; j++){
             if(d.idx == select_bubble[j].idx){
                 select_bubble.splice(j,1);
                 select_bubble_add.splice(j,1);
             }
         }
+        console.log(select_bubble);
     }
 }
 
@@ -158,8 +175,8 @@ function tick() { // tick 會不斷的被呼叫
     ticktimes++;
 
     images.attr({
-        x: function(it){ return it.x;},
-        y: function(it){ return it.y ;},
+        x: function(it){ return it.x - it.r;},
+        y: function(it){ return it.y - it.r;},
         width: function(it) {return it.r*2;},
         height: function(it) {return it.r*2;},
     });
@@ -235,7 +252,7 @@ function showBubble(){
             .nodes(nodes)               // 綁定資料
             .size([800,600])            // 設定範圍
             .gravity(0.1)
-            .charge(-200)
+            .charge(-150)
             .on("tick", tick)           // 設定 tick 函式
             .start()                   // 啟動！
             .alpha(0.1);

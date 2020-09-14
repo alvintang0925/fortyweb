@@ -222,9 +222,9 @@ function countFunds(){
                     if(best_answer.trend < good_answer.trend){
                         
                         best_answer = good_answer;
-                        console.log("i = ", i);
-                        console.log(best_answer.counter);
-                        console.log(best_answer.trend);
+                    //     console.log("i = ", i);
+                    //     console.log(best_answer.counter);
+                    //     console.log(best_answer.trend);
                     }
                     
                     if(worst_answer.trend > bad_answer.trend){
@@ -272,9 +272,9 @@ function countFunds(){
                 if(exp_best_answer.trend < best_answer.trend){
                         
                     exp_best_answer = best_answer;
-                    console.log("i = ", i);
-                    console.log(best_answer.counter);
-                    console.log(best_answer.trend);
+                    // console.log("i = ", i);
+                    // console.log(best_answer.counter);
+                    // console.log(best_answer.trend);
                 }
             }
             
