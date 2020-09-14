@@ -251,8 +251,8 @@ function showBubble(){
         force = d3.layout.force() // 建立 Layout
             .nodes(nodes)               // 綁定資料
             .size([800,600])            // 設定範圍
-            .gravity(0.1)
-            .charge(-150)
+            .gravity(0.1)               //重力
+            .charge(-200)               //磁力
             .on("tick", tick)           // 設定 tick 函式
             .start()                   // 啟動！
             .alpha(0.1);

@@ -178,6 +178,7 @@ function selectButton(e){
             });
             
             for(var j = 0; j < COMPANYNUMBER; j++){
+                console.log(stock);
                 color = getRandomColor();
                 dataset.push({
                     label : stock[j].company_name,
@@ -227,12 +228,12 @@ function selectButton(e){
             break;
         case "TREND":
 
-            stock = quickSort(stock);
-            stock.reverse();
+            stock_copy = quickSort(stock);
+            stock_copy.reverse();
             var neg_stock = [];
             for(var j = 0; j < COMPANYNUMBER; j++){
-                if(stock[stock.length - 1].trend < 0){
-                    neg_stock.push(stock.pop());
+                if(stock_copy[stock_copy.length - 1].trend < 0){
+                    neg_stock.push(stock_copy.pop());
                 }
             }
             neg_stock.reverse();
@@ -246,14 +247,14 @@ function selectButton(e){
                 yAxisID: 'y-axis-1',
             });
 
-            for(var j = 0; j < stock.length; j++){
+            for(var j = 0; j < stock_copy.length; j++){
                 color = getRandomColor();
                 dataset.push({
-                    label : stock[j].company_name,
+                    label : stock_copy[j].company_name,
                     backgroundColor : color,
                     borderColor : color,
                     borderWidth : 1,
-                    data: [stock[j].trend],
+                    data: [stock_copy[j].trend],
                     yAxisID: 'y-axis-1',
                 });
             } 
