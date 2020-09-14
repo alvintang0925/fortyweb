@@ -178,7 +178,6 @@ function selectButton(e){
             });
             
             for(var j = 0; j < COMPANYNUMBER; j++){
-                console.log(stock);
                 color = getRandomColor();
                 dataset.push({
                     label : stock[j].company_name,

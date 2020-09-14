@@ -34,7 +34,6 @@ function start(){
         temp += "<img width = 50 height = 50 src = 'img/" + company_name[exp_best_answer.locate[j]] + ".png' />\n";
     }
     myDiv.innerHTML = temp;
-    console.log(myDiv.innerHTML);
 }
 
 window.addEventListener("load", start, false);
