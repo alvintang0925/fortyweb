@@ -1,5 +1,16 @@
 var myChart;
 var ctx;
+
+var timeFormat = 'MM/DD/YYYY;' //'MM/DD/YYYY HH:mm';
+
+function newDate(days) {
+    return moment().add(days, 'd').toDate();
+}
+
+function newDateString(days) {
+    return moment().add(days, 'd').format(timeFormat);
+}
+        
 function selectButton(e){
     // myDiv.innerHTML = "";
     
@@ -23,7 +34,8 @@ function selectButton(e){
     
     var day_label = [];
     for(var j = 0; j < DAYNUMBER; j++){
-        day_label.push("day "+(j+1));
+        //day_label.push("day "+(j+1));
+        day_label.push(newDateString(j - DAYNUMBER));
     }
 
     var color = getRandomColor();
@@ -32,7 +44,30 @@ function selectButton(e){
 
     switch(e.value){
         case "PORTFOLIO":
+            exp_best_answer.chart_totalMoney = [];
+            exp_best_answer.chart_y_line = [];
 
+            for(var j = 0 ; j < DAYNUMBER; j++){
+                exp_best_answer.chart_totalMoney.push({
+                    x: newDateString(j - DAYNUMBER),
+                    y: exp_best_answer.totalMoney[j]
+                });
+                exp_best_answer.chart_y_line.push({
+                    x: newDateString(j - DAYNUMBER),
+                    y: exp_best_answer.y_line[j]
+                });
+
+            }
+
+            for(var j = 0; j < exp_best_answer.counter; j++){
+                exp_best_answer.chart_fs[j] = [];
+                for(var k = 0; k < DAYNUMBER; k++){
+                    exp_best_answer.chart_fs[j].push({
+                        x: newDateString(k - DAYNUMBER),
+                        y: exp_best_answer.fs[j][k]
+                    });
+                }
+            }
             color = getRandomColor();
             dataset.push({
                     label : "best : " + exp_best_answer.company_name,
@@ -40,7 +75,7 @@ function selectButton(e){
                     backgroundColor : "#FFD9EC",
                     borderColor : "#FF0000",
                     borderWidth : 3,
-                    data: exp_best_answer.totalMoney,
+                    data: exp_best_answer.chart_totalMoney,
                     fill : "1",
                     yAxisID: 'y-axis-2',
                 });
@@ -50,7 +85,7 @@ function selectButton(e){
                     backgroundColor : color,
                     borderColor : color,
                     borderWidth : 1,
-                    data: exp_best_answer.y_line,
+                    data: exp_best_answer.chart_y_line,
                     fill : false,
                     pointRadius : 0,
                     yAxisID: 'y-axis-2',
@@ -67,7 +102,7 @@ function selectButton(e){
                     backgroundColor : color,
                     borderColor : color,
                     borderWidth : 1,
-                    data: exp_best_answer.fs[j],
+                    data: exp_best_answer.chart_fs[j],
                     fill : false,
                     pointRadius: 1,
                     yAxisID: 'y-axis-1',
@@ -100,8 +135,18 @@ function selectButton(e){
                         enabled: true
                     },
                     scales: {
-                        xAxes: [{
+                        xAxes: {
                             display: true,
+                            type: 'time',
+                            time: {
+                                parser: timeFormat,
+                                // round: 'day'
+                                tooltipFormat: 'll HH:mm'
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Date'
+                            }
                             // type: 'time',
                             // distribution: 'series',
                             // offset: true,
@@ -116,7 +161,7 @@ function selectButton(e){
                             //     maxRotation: 0,
                             //     sampleSize: 100
                             // },
-                        }],
+                        },
                         yAxes: [{
                             type: 'linear',
                             display: true,

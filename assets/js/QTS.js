@@ -27,6 +27,9 @@ function STOCK(){
     this.daily_risk = 0;
     this.trend = 0;
     this.day = 0;
+    this.chart_totalMoney = [];
+    this.chart_y_line = [];
+    this.chart_fs = [];
     this.Y = 0;
     this.y_line = [];
     this.Y_line = function(){
@@ -36,6 +39,7 @@ function STOCK(){
     this.init = function(){
         for(var j = 0; j < this.counter; j++){
             this.fs[j] = [];
+            this.chart_fs[j] = [];
         }
         for(var j = 0; j < DAYNUMBER; j++){
             this.totalMoney[j] = 0;
