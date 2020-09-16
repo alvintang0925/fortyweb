@@ -48,7 +48,6 @@ function STOCK(){
 };
 
 function countTrend(stock){
-    
     for(var j = 0; j < stock.length; j++){
         if(stock[j].counter!=0){
             stock[j].dMoney = Math.floor(FUNDS / stock[j].counter);
@@ -113,10 +112,18 @@ function countFunds(){
             STOCKNUMBER = parseInt(document.getElementById("stock_number").value);
             EXPNUMBER = parseInt(document.getElementById("exp_number").value);
 
-            for(var j = 0; j < bubble_list.length; j++){
-                    s_company[j] = bubble_list[j].idx;
+            if(mode == "general"){
+                for(var j = 0; j < bubble_list.length; j++){
+                        s_company[j] = bubble_list[j].idx;
+                }
+                COMPANYNUMBER = bubble_list.length;
+            }else{
+                for(var j = 0; j < 30; j++){
+                    s_company[j] = j;
+                }
+                COMPANYNUMBER = 30;
             }
-            COMPANYNUMBER = bubble_list.length;
+
             DAYNUMBER = data.length;
             c = 0;
             var count = 0;
@@ -152,6 +159,32 @@ function countFunds(){
             }
 
             stock = countTrend(stock);
+
+            var game_stock = []
+            game_stock[0] = new STOCK();
+
+            if(mode == "game"){
+                for(var j = 0; j < COMPANYNUMBER; j++){
+                    if(j != bubble_list[game_stock[0].counter].idx){
+                        game_stock[0].data[j] = 0;
+                    }else{
+                        if(game_stock[0].counter != 0){
+                            game_stock[0].company_name += ", ";
+                        }
+                        game_stock[0].data[j] = 1;
+                        game_stock[0].company_name += company_name[j];
+                        game_stock[0].locate[game_stock[0].counter] = j;
+                        game_stock[0].counter++;
+                    }
+                    if(game_stock[0].counter == bubble_list.length){
+                        break;
+                    }
+                }
+                game_stock[0].init();
+                game_stock = countTrend(game_stock);
+            }
+
+            
 
 
             var exp_best_answer = new STOCK();
@@ -282,9 +315,12 @@ function countFunds(){
                 }
             }
             
-
+            
             console.log(exp_best_answer);
+            console.log(game_stock);
             if (window.localStorage) {
+                localStorage.mode = mode;
+                localStorage.game_stock = JSON.stringify(game_stock);
                 localStorage.exp_best_answer = JSON.stringify(exp_best_answer);
                 localStorage.stock_length = stock.length;
                 for(var j = 0; j < stock.length; j++){

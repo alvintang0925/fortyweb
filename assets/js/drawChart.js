@@ -14,9 +14,14 @@ function newDateString(days) {
 function selectButton(e){
     // myDiv.innerHTML = "";
     
-    var myButton = document.getElementsByName("button");
-    for(var j = 0; j < myButton.length; j++){
-        myButton[j].setAttribute("style", "");
+    if(mode == "game"){
+        for(var j = 0; j < myButton.length ; j++){
+            myButton[j].setAttribute("style", "");
+        }
+    }else{
+        for(var j = 0; j < myButton.length-1 ; j++){
+            myButton[j].setAttribute("style", "");
+        }
     }
     e.setAttribute("style", "background:#3bb4f2;");
     // <canvas id = "canvas" style = "background-color:white;" width="1600" height="600"></canvas>
@@ -378,7 +383,63 @@ function selectButton(e){
 
             break;
 
+            case "COMPARE":
+            
+            dataset.push({
+                label : "你的答案",
+                    lineTension : 0,
+                    backgroundColor : color,
+                    borderColor : color,
+                    borderWidth : 1,
+                    data: game_stock[0].totalMoney,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
+
+            dataset.push({
+                label : "best : " + exp_best_answer.company_name,
+                    backgroundColor : "#FFD9EC",
+                    borderColor : "#FF0000",
+                    borderWidth : 3,
+                    data: exp_best_answer.totalMoney,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
+
+            var lineChartData = {
+                labels: day_label,
+                datasets: dataset,
+            }
+
+            myChart = new Chart(ctx,{
+                type: 'line',
+                    data: lineChartData,
+                    options: {
+                        responsive: true,
+                        legend:{
+                            display: true,
+                        },
+                        tooltips: {
+                            enabled: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true
+                            }],
+                            yAxes: [{
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                id: 'y-axis-1',
+                            }, 
+                            ]
+                        },
+                    }
+            });
+
+            break;
     }
+    
 }
 function quickSort(arr) {
     

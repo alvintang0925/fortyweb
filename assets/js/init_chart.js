@@ -5,12 +5,18 @@ var DAYNUMBER;
 var COMPANYNUMBER;
 var myDiv;
 var div_inner;
+var mode;
+var game_stock;
+var myButton ;
 function start(){       
     myDiv = document.getElementById("myDiv");
     ctx = document.getElementById("canvas").getContext("2d");
     myChart = new Chart(ctx,{});
 
     if(window.localStorage){
+        mode = localStorage.mode;
+        game_stock = JSON.parse(localStorage["game_stock"]);
+        console.log(game_stock);
         exp_best_answer = JSON.parse(localStorage["exp_best_answer"]);
         var stock_length = parseInt(localStorage["stock_length"]);
         for(var j = 0; j < stock_length; j++){
@@ -34,6 +40,12 @@ function start(){
         temp += "<img width = 50 height = 50 src = 'img/" + company_name[exp_best_answer.locate[j]] + ".png' />\n";
     }
     myDiv.innerHTML = temp;
+    myButton = document.getElementsByName("button");
+    
+    if(mode == "game"){
+        myButton[myButton.length-1].setAttribute("style", "");
+    }
+    
 }
 
 window.addEventListener("load", start, false);

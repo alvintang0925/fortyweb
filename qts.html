@@ -103,24 +103,25 @@
                                             </div>
                                             <div class = "fields">
                                                 <div class = "field quarter">
-                                                    <label for="name">旋轉角度</label>
+                                                    <label >旋轉角度</label>
                                                     <input type = "text" value="0.0004" id = "delta">
                                                 </div>
                                                 <div class = "field quarter">
-                                                    <label for="name">執行次數</label>
+                                                    <label >執行次數</label>
                                                     <input type = "text" value="10000" id = "runtimes">
                                                 </div>
                                                 <div class = "field quarter">
-                                                    <label for="name">粒子數</label>
+                                                    <label >粒子數</label>
                                                     <input type = "text" value="10" id = "stock_number">
                                                 </div>
                                                 <div class = "field quarter">
-                                                    <label for="name">實驗次數</label>
+                                                    <label >實驗次數</label>
                                                     <input type = "text" value="1" id = "exp_number">
                                                 </div>
                                             </div>
                                             <div class = "fields">
                                                 <div class = "field quarter">
+													<label >演算法</label>
                                                     <select name = "qts" id = "qts_list">
                                                         <option value = "QTS">QTS</option>
                                                         <option value = "GQTS">GQTS</option>
@@ -129,15 +130,23 @@
                                                 </div>
                                                 <div class = "field quarter">
                                                     
-                                                        <label for="name">開始月份</label>
+                                                        <label >開始月份</label>
                                                         <input type="month" min="2009-12" max = "2019-11" value = "2019-06" id="start_month" />
                                                 </div>
                                                 <div class = "field quarter">
-                                                        <label for="name">結束月份</label>
+                                                        <label >結束月份</label>
                                                         <input type="month" min="2010-01" max = "2019-12" value = "2019-06" id="end_month" />
-                                                    
-                                                </div>
-                                            </div>
+												</div>
+
+												<div class = "field quarter">
+													<label >模式</label>
+                                                    <select id = "mode">
+														<option value = "general" selected>GENERAL</option>
+														<option value = "game">GAME</option>
+                                                    </select>
+												</div>
+												
+											</div>
                                         </form>
                                     </section>
 								</div>

@@ -31,6 +31,7 @@ function selectALL(){
 function resetAll(){
     var bubble_reset = document.getElementById("bubble_reset");
     bubble_reset.play();
+    
 
     // force.stop();
     // for(var j = 0; j < bubble_list.length; j++){
@@ -93,6 +94,8 @@ function preset(){
     data_list_count = 0;
     filename = [];
     count_f = 0;
+    mode = document.getElementById("mode").value;
+    console.log(mode);
     var start_month = document.getElementById("start_month").value;
     var end_month = document.getElementById("end_month").value;
     start_month = start_month.split("-");
