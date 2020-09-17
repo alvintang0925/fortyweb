@@ -182,8 +182,8 @@ function tick() { // tick 會不斷的被呼叫
     });
 
     names.attr({
-        x: function(it){ return it.x;},
-        y: function(it){ return it.y;}
+        x: function(it){ return it.x - it.r*1.5;},
+        y: function(it){ return it.y - it.r;}
     }).text(function(it){return it.name});
 
     if(ticktimes == 298){
@@ -244,7 +244,7 @@ function showBubble(){
                                 .attr("text-anchor", "middle")
                                 .attr("x", function(it){return it.x;})
                                 .attr("y", function(it){return it.y;})
-                                .attr("fill", "black")
+                                .attr("fill", "red")
                                 .text(function(it){return it.name;});
 
                                 

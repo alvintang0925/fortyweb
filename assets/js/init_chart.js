@@ -4,12 +4,14 @@ var company_name = [];
 var DAYNUMBER;
 var COMPANYNUMBER;
 var myDiv;
+var myDiv2;
 var div_inner;
 var mode;
 var game_stock;
 var myButton ;
 function start(){       
     myDiv = document.getElementById("myDiv");
+    myDiv2 = document.getElementById("myDiv2");
     ctx = document.getElementById("canvas").getContext("2d");
     myChart = new Chart(ctx,{});
 
@@ -39,7 +41,15 @@ function start(){
     for(var j = 0; j < exp_best_answer.counter; j++){
         temp += "<img width = 50 height = 50 src = 'img/" + company_name[exp_best_answer.locate[j]] + ".png' />\n";
     }
-    myDiv.innerHTML = temp;
+    myDiv.innerHTML = "<label>Best Portfolio</label>" + temp;
+
+    if(mode == "game"){
+        var temp = "";
+        for(var j = 0; j < game_stock[0].counter; j++){
+            temp += "<img width = 50 height = 50 src = 'img/" + company_name[game_stock[0].locate[j]] + ".png' />\n";
+        }
+        myDiv2.innerHTML = "<label>Your Portfolio</label>" + temp;
+    }
     myButton = document.getElementsByName("button");
     
     if(mode == "game"){

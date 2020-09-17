@@ -1,5 +1,38 @@
 var myChart;
 var ctx;
+var company_color = {
+    AAPL: "#4F4F4F",
+    AXP: "#8ecae6", 
+    BA: "#90f1ef",
+    CAT: "#7bf1a8",
+    CVX: "#1982c4",
+    DD: "#ff595e",
+    DIS: "#8093f1",
+    WBA: "#6a4c93",
+    HD: "#8ac926",
+    IBM: "#fdb833",
+    INTC: "#797893",
+    JNJ: "#FFF7CF",
+    MCD: "#ffdc5e",
+    KO: "#ce4257",
+    MMM: "#720026",
+    MRK: "#07beb8",
+    NKE: "#a1c181",
+    PFE: "#81b29A",
+    PG: "#606c38",
+    TRV: "#005757",
+    UTX: "#ffd6e0",
+    V: "#f26845",
+    VZ: "#ef476f",
+    WMT: "#e500a4",
+    CSCO: "#a100f2",
+    GS: "#9c89b8",
+    JPM: "#f0a6ca",
+    MSFT: "#efc3e6",
+    UNH: "#ffac81",
+    XOM: "#cdeac0"
+};
+var myColor = [];
 
 var timeFormat = 'MM/DD/YYYY;' //'MM/DD/YYYY HH:mm';
 
@@ -85,7 +118,7 @@ function selectButton(e){
                     yAxisID: 'y-axis-2',
                 });
             dataset.push({
-                label : "趨勢線",
+                label : "trend",
                     lineTension : 0,
                     backgroundColor : color,
                     borderColor : color,
@@ -104,8 +137,8 @@ function selectButton(e){
                     label : company_name[exp_best_answer.locate[j]],
                     borderDash: [5, 5],
                     lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : company_color[company_name[exp_best_answer.locate[j]]],
+                    borderColor : company_color[company_name[exp_best_answer.locate[j]]],
                     borderWidth : 1,
                     data: exp_best_answer.chart_fs[j],
                     fill : false,
@@ -233,8 +266,8 @@ function selectButton(e){
                     label : stock[j].company_name,
                     borderDash: [5, 5],
                     lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : company_color[stock[j].company_name],
+                    borderColor : company_color[stock[j].company_name],
                     borderWidth : 1,
                     data: stock[j].totalMoney,
                     fill : false,
@@ -300,8 +333,8 @@ function selectButton(e){
                 color = getRandomColor();
                 dataset.push({
                     label : stock_copy[j].company_name,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : company_color[stock_copy[j].company_name],
+                    borderColor : company_color[stock_copy[j].company_name],
                     borderWidth : 1,
                     data: [stock_copy[j].trend],
                     yAxisID: 'y-axis-1',
@@ -312,8 +345,8 @@ function selectButton(e){
                 color = getRandomColor();
                 dataset.push({
                     label : neg_stock[j].company_name,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : company_color[neg_stock[j].company_name],
+                    borderColor : company_color[neg_stock[j].company_name],
                     borderWidth : 1,
                     data: [neg_stock[j].trend],
                     yAxisID: 'y-axis-2',
@@ -384,17 +417,6 @@ function selectButton(e){
             break;
 
             case "COMPARE":
-            
-            dataset.push({
-                label : "你的答案",
-                    lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
-                    borderWidth : 1,
-                    data: game_stock[0].totalMoney,
-                    fill : false,
-                    yAxisID: 'y-axis-1',
-            });
 
             dataset.push({
                 label : "best : " + exp_best_answer.company_name,
@@ -405,6 +427,44 @@ function selectButton(e){
                     fill : false,
                     yAxisID: 'y-axis-1',
             });
+
+            dataset.push({
+                label : "best 趨勢線",
+                    backgroundColor : color,
+                    borderColor : color,
+                    borderWidth : 3,
+                    data: exp_best_answer.y_line,
+                    pointRadius : 0,
+                    fill : "-1",
+                    yAxisID: 'y-axis-1',
+            });
+
+            color = getRandomColor();
+            
+            dataset.push({
+                label : "你的答案",
+                    backgroundColor : color,
+                    borderColor : color,
+                    borderWidth : 1,
+                    data: game_stock[0].totalMoney,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
+
+            color = getRandomColor();
+
+            dataset.push({
+                label : "你的趨勢線",
+                    backgroundColor : color,
+                    borderColor : color,
+                    borderWidth : 1,
+                    data: game_stock[0].y_line,
+                    pointRadius : 0,
+                    fill : "-1",
+                    yAxisID: 'y-axis-1',
+            });
+
+            
 
             var lineChartData = {
                 labels: day_label,
