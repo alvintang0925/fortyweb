@@ -126,10 +126,10 @@ function preset(){
         }
     }
     sendBubble();
-    setTimeout(function(){$('#loading').show();}, 1000);
+    $('#loading').show();
     
     temp(filename[0], 0)
     
     se = Math.max(count_f * 50, 1000);
-    setTimeout(countFunds,se);
+    //setTimeout(countFunds,se);
 }

@@ -15,4 +15,5 @@ function start(){
     showBubble();
 }
 
+
 window.addEventListener("load", start, false);

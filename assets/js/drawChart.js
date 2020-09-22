@@ -46,7 +46,7 @@ function newDateString(days) {
         
 function selectButton(e){
     // myDiv.innerHTML = "";
-    
+    document.getElementById("download_img").style = "float: right;";
     if(mode == "game"){
         for(var j = 0; j < myButton.length ; j++){
             myButton[j].setAttribute("style", "");
@@ -499,6 +499,8 @@ function selectButton(e){
 
             break;
     }
+
+
     
 }
 function quickSort(arr) {
