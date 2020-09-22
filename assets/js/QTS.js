@@ -309,9 +309,7 @@ function countFunds(){
                 if(exp_best_answer.trend < best_answer.trend){
                         
                     exp_best_answer = best_answer;
-                    // console.log("i = ", i);
-                    // console.log(best_answer.counter);
-                    // console.log(best_answer.trend);
+                    
                 }
             }
             

@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Landing - Forty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style type = "text/css">
+            ul {
+            list-style-type: none;
+            }
+
+            li {
+            display: inline-block;
+            }
+
+            input[type="checkbox"][id^="cb"] {
+            display: none;
+            }
+
+            label {
+            
+            padding: 10px;
+            display: block;
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+
+            label::before {
+            background-color: white;
+            color: white;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            border: 1px solid grey;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 28px;
+            transition-duration: 0.4s;
+            transform: scale(0);
+            }
+
+            label img {
+            height: 100px;
+            width: 100px;
+            transition-duration: 0.2s;
+            transform-origin: 50% 50%;
+            }
+
+            :checked+label {
+            
+            }
+
+            :checked+label::before {
+            content: "✓";
+            background-color: grey;
+            transform: scale(1);
+            }
+
+            :checked+label img {
+            transform: scale(0.7);
+            box-shadow: 0 0 5px #333;
+            z-index: -1;
+            }
+            div{
+                display: inline-block;
+                /* padding: 0em; */
+            }
+        </style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">Landing</a></li>
+							<li><a href="generic.html">Generic</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button primary fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+                                    <div>
+                                        <div class = "chart" style = "width: 45%;">    
+                                            <input type="checkbox" id="myCheckbox1" value = "AAPL"/>
+                                            <label for="myCheckbox1"><img src="img/AAPL.png" /></label>
+                                            <canvas id = "canvas1" style = "background-color: white;"></canvas>
+                                        </div>
+                                        <div class = "chart" style = "width: 45%;">    
+                                            <input type="checkbox" id="myCheckbox2" value = "AXP"/>
+                                            <label for="myCheckbox2"><img src="img/AXP.png" /></label>
+                                            <canvas id = "canvas2" style = "background-color: white;"></canvas>
+                                        </div>
+                                        <div class = "chart" style = "width: 45%;">    
+                                            <input type="checkbox" id="myCheckbox3" value = "BA"/>
+                                            <label for="myCheckbox3"><img src="img/BA.png" /></label>
+                                            <canvas id = "canvas3" style = "background-color: white;"></canvas>
+                                        </div>
+                                        <div class = "chart" style = "width: 45%;">    
+                                            <input type="checkbox" id="myCheckbox4" value = "CAT"/>
+                                            <label for="myCheckbox4"><img src="img/CAT.png" /></label>
+                                            <canvas id = "canvas4" style = "background-color: white;"></canvas>
+                                        </div>
+                                        <div class = "chart" style = "width: 45%;">    
+                                            <input type="checkbox" id="myCheckbox5" value = "CSCO"/>
+                                            <label for="myCheckbox5"><img src="img/CSCO.png" /></label>
+                                            <canvas id = "canvas5" style = "background-color: white;"></canvas>
+                                        </div>
+                                        
+									</div>
+								</div>
+							</section>
+
+						
+
+						<!-- Three -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+										<h2>Massa libero</h2>
+									</header>
+									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button next">Get Started</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</div>
+
+				
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script src="https://d3js.org/d3.v3.min.js"></script>
+            <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+            <script src = "assets/js/init_game.js"></script>
+
+	</body>
+</html>

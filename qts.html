@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style type = text/css>
-			#loading{
+			/* #loading{
 				z-index: 1;
 				padding: 10px 10px 5px;
 				left: 40%;
@@ -23,7 +23,26 @@
 				text-align: center;
 				border-radius: 5px;
 				display:none
-			}
+			} */
+			#loading {
+				border-top: 16px solid blue;
+				border-right: 16px solid green;
+				border-bottom: 16px solid red;
+				border-left: 16px solid pink;
+				border-radius: 50%;
+				left: 46%;
+				top: 47%;
+				position: fixed;
+				width: 120px;
+				height: 120px;
+				animation: spin 2s linear infinite;
+				display: none;
+				}
+
+				@keyframes spin {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
+				}
 		</style>
 		
 
@@ -63,8 +82,7 @@
 						<div id="root">
 							<svg width="100%" height="700px" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid"></svg>
 							<div id='loading'>
-								<img src = "img/loading.svg"/>
-
+								<!-- <img src = "img/loading.svg"/> -->
 							</div>
                             <audio id="bubble_click">
                                 <source = src="mp3/bubble_click.mp3" type="audio/mp3">
