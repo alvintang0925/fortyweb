@@ -94,8 +94,7 @@ function preset(){
     data_list_count = 0;
     filename = [];
     count_f = 0;
-    mode = document.getElementById("mode").value;
-    console.log(mode);
+    mode = "general"
     var start_month = document.getElementById("start_month").value;
     var end_month = document.getElementById("end_month").value;
     start_month = start_month.split("-");
@@ -125,11 +124,19 @@ function preset(){
             }
         }
     }
+
+    var QTSTYPE = document.getElementById("qts_list").value;
+    console.log(QTSTYPE);
+    var DELTA = parseFloat(document.getElementById("delta").value);
+    var RUNTIMES = parseInt(document.getElementById("runtimes").value);
+    var STOCKNUMBER = parseInt(document.getElementById("stock_number").value);
+    var EXPNUMBER = parseInt(document.getElementById("exp_number").value);
+
     sendBubble();
     setTimeout(function(){$('#loading').show();}, 1000);
     
     temp(filename[0], 0)
     
     se = Math.max(count_f * 50, 1000);
-    setTimeout(countFunds,se);
+    setTimeout(function(){countFunds(QTSTYPE, DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER);},se);
 }

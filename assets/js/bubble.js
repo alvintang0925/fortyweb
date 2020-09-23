@@ -12,7 +12,6 @@ var nodes = [];
 var force;
 var all_company_name = [];
 var ticktimes = 0;
-console.log(document.body.offsetWidth);
 
 function sendBubble(){
 
@@ -37,7 +36,6 @@ function sendBubble(){
                     .attr("x", (document.body.offsetWidth) / 2 - 300)
                     .attr("y", 570)
                     .each('start',function(it){
-                        console.log(document.body.offsetWidth / 2);
                         it.r = 0;
                     });
 

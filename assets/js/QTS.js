@@ -1,10 +1,6 @@
 var FUNDS = 10000000;
 var DAYNUMBER;
-var STOCKNUMBER;
-var EXPNUMBER;
-var QTSTYPE = 2; //QTS 0, GQTS 1, GNQTS
-var RUNTIMES;
-var DELTA;
+var mode;
 var COMPANYNUMBER;
 var company_name = [];
 var s_company = [];
@@ -102,21 +98,18 @@ function countTrend(stock){
 }
 
 
-function countFunds(){
+function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
     if(data.length != 0){
         d3.csv("data/data4.csv", function(d){
             
-            QTSTYPE = document.getElementById("qts_list").value;
-            DELTA = parseFloat(document.getElementById("delta").value);
-            RUNTIMES = parseInt(document.getElementById("runtimes").value);
-            STOCKNUMBER = parseInt(document.getElementById("stock_number").value);
-            EXPNUMBER = parseInt(document.getElementById("exp_number").value);
+            console.log(QTSTYPE);
 
             if(mode == "general"){
                 for(var j = 0; j < bubble_list.length; j++){
                         s_company[j] = bubble_list[j].idx;
                 }
                 COMPANYNUMBER = bubble_list.length;
+                DAYNUMBER = data.length;
             }else{
                 for(var j = 0; j < 30; j++){
                     s_company[j] = j;
@@ -124,7 +117,7 @@ function countFunds(){
                 COMPANYNUMBER = 30;
             }
 
-            DAYNUMBER = data.length;
+            
             c = 0;
             var count = 0;
             for(var ke in data[0]){
@@ -165,7 +158,7 @@ function countFunds(){
 
             if(mode == "game"){
                 for(var j = 0; j < COMPANYNUMBER; j++){
-                    if(j != bubble_list[game_stock[0].counter].idx){
+                    if(j != select_box[game_stock[0].counter]){
                         game_stock[0].data[j] = 0;
                     }else{
                         if(game_stock[0].counter != 0){
@@ -176,12 +169,13 @@ function countFunds(){
                         game_stock[0].locate[game_stock[0].counter] = j;
                         game_stock[0].counter++;
                     }
-                    if(game_stock[0].counter == bubble_list.length){
+                    if(game_stock[0].counter == select_box.length){
                         break;
                     }
                 }
                 game_stock[0].init();
                 game_stock = countTrend(game_stock);
+                console.log(game_stock);
             }
 
             

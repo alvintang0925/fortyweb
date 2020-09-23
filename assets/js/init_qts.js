@@ -1,4 +1,4 @@
-var mode;
+
 function start(){       
     var sendButton = document.getElementById("sendButton");
     sendButton.addEventListener("click", preset, false);

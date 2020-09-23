@@ -13,7 +13,6 @@ function getData(){
             for(var k = 0; k < DAYNUMBER; k++){
                 price[j].push(data[k][company_name[j]]);
             }
-            console.log(price[j]);
         }
         start();
     });

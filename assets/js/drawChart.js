@@ -120,8 +120,8 @@ function selectButton(e){
             dataset.push({
                 label : "trend",
                     lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : "#000000",
+                    borderColor : "#000000",
                     borderWidth : 1,
                     data: exp_best_answer.chart_y_line,
                     fill : false,
@@ -242,8 +242,8 @@ function selectButton(e){
             dataset.push({
                 label : "趨勢線",
                     lineTension : 0,
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : "#000000",
+                    borderColor : "#000000",
                     borderWidth : 1,
                     data: exp_best_answer.y_line,
                     fill : false,
@@ -430,8 +430,8 @@ function selectButton(e){
 
             dataset.push({
                 label : "best 趨勢線",
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : "#000000",
+                    borderColor : "#000000",
                     borderWidth : 3,
                     data: exp_best_answer.y_line,
                     pointRadius : 0,
@@ -530,7 +530,7 @@ function getRandomColor() {
     for (var i = 0; i < 6; i++ ) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    if(color == "#FF0000" || color == "#FFD9EC"){
+    if(color == "#FF0000" || color == "#FFD9EC" || color == "#000000"){
         return getRandomColor();
     }else{
         return color;
