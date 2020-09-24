@@ -20,8 +20,13 @@ function getData(){
 
 var ctx = [];
 var myChart;
+
 var dataset = [];
+var ctx0;
 function start(){
+
+    
+
     for(var j = 0; j < 5; j++){
         var temp = "canvas" + (j+1);
         ctx[j] = document.getElementById(temp).getContext("2d");
@@ -59,20 +64,23 @@ function start(){
             options: {
                 responsive: true,
                 legend:{
-                    display: true,
+                    display: false,
                 },
                 tooltips: {
-                    enabled: true
+                    enabled: false
                 },
                 scales: {
                     xAxes: [{
-                        display: true
+                        display: false
                     }],
                     yAxes: [{
-                        type: 'linear',
+                        // type: 'linear',
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
+                        gridLines: {
+                            drawOnChartArea: true, // only want the grid lines for one axis to show up
+                        },
                     }, 
                     ]
                 },
@@ -80,6 +88,8 @@ function start(){
         });
 
     }
+    ctx0 = document.getElementById("canvas0").getContext("2d");
+    myChart = new Chart(ctx0, {});
     
 }
 
