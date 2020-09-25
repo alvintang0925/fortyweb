@@ -8,7 +8,7 @@ function getData(){
         for(var j in data[0]){
             company_name.push(j);
         }
-        for(var j = 0; j < 5; j++){
+        for(var j = 0; j < 30; j++){
             price[j] = [];
             for(var k = 0; k < DAYNUMBER; k++){
                 price[j].push(data[k][company_name[j]]);
@@ -27,7 +27,7 @@ function start(){
 
     
 
-    for(var j = 0; j < 5; j++){
+    for(var j = 0; j < 30; j++){
         var temp = "canvas" + (j+1);
         ctx[j] = document.getElementById(temp).getContext("2d");
     }
@@ -37,7 +37,7 @@ function start(){
         day_label.push("day "+(j+1));
     }
 
-    for(var j = 0; j < 5; j++){
+    for(var j = 0; j < 30; j++){
         dataset = [];
         dataset.push({
             label : company_name[j],

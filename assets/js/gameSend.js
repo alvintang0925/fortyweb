@@ -3,7 +3,7 @@
 var company_box = [];
 var select_box = [];
 function send(){
-    
+    $('#loading').show();
     mode = "game";
     countFunds("GNQTS", 0.0004, 10000, 10, 1);
 }
@@ -34,6 +34,8 @@ function select(t){
         myChart.destroy();
         var c = document.getElementById("canvas0");
         c.setAttribute("style", "background-color: white;");
+        var s = document.getElementById("show_data");
+        s.setAttribute("style", "");
         select_box.sort(sortSelect);
 
         var temp = [];
@@ -102,10 +104,18 @@ function select(t){
                 },
             }
         });
+
+        var myData = [];
+        myData = document.getElementsByName("myData");
+        myData[0].value = temp[0].trend;
+        myData[1].value = temp[0].daily_risk;
+        
     }else{
-        var c = document.getElementById("canvas0");
         myChart.destroy();
+        var c = document.getElementById("canvas0");
         c.setAttribute("style", "background-color: white; display: none;")
+        var s = document.getElementById("show_data");
+        s.setAttribute("style", "display: none;");
     }
 
 

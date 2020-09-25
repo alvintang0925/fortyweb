@@ -18,7 +18,6 @@ function start(){
     if(window.localStorage){
         mode = localStorage.mode;
         game_stock = JSON.parse(localStorage["game_stock"]);
-        console.log(game_stock);
         exp_best_answer = JSON.parse(localStorage["exp_best_answer"]);
         var stock_length = parseInt(localStorage["stock_length"]);
         for(var j = 0; j < stock_length; j++){

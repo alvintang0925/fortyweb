@@ -102,8 +102,6 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
     if(data.length != 0){
         d3.csv("data/data4.csv", function(d){
             
-            console.log(QTSTYPE);
-
             if(mode == "general"){
                 for(var j = 0; j < bubble_list.length; j++){
                         s_company[j] = bubble_list[j].idx;
@@ -175,7 +173,6 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                 }
                 game_stock[0].init();
                 game_stock = countTrend(game_stock);
-                console.log(game_stock);
             }
 
             
@@ -307,9 +304,6 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                 }
             }
             
-            
-            console.log(exp_best_answer);
-            console.log(game_stock);
             if (window.localStorage) {
                 localStorage.mode = mode;
                 localStorage.game_stock = JSON.stringify(game_stock);

@@ -68,16 +68,42 @@
 								<div class = "inner" id = "div">
 									<div id = "myDiv"></div>
 									<div id = "myDiv2"></div>
-									<a id="download"
-										download="ChartImage.jpg" 
-										href=""
-										class=""
-										title="" width = "50px" height = "50px">
+									<div>
+										<form>
+											<div class = "fields" id = "show_data" style="display: none;">
+												<div class = "field quarter">
+													<label>最佳趨勢值</label>
+													<input name = "myData" type = "text" value = "">
+												</div>
+												<div class = "field quarter">
+													<label>最佳風險</label>
+													<input name = "myData" type = "text" value = "">
+												</div>
+												<div class = "field quarter">
+													<label>你的趨勢值</label>
+													<input name = "myData" type = "text" value = "">
+												</div>
+												<div class = "field quarter">
+													<label>你的風險</label>
+													<input name = "myData" type = "text" value = "">
+												</div>
+											</div>
+										</form>
+										<div>
+											<a id="download"
+												download="ChartImage.jpg" 
+												href=""
+												class=""
+												title="" width = "50px" height = "50px">
 
-										<!-- Download Icon -->
-									<img src = "img/download.png"  id = "download_img" style = "float: right; display: none" width = "50px" height = "50px" ></i>
-									</a>
-									<canvas id = "canvas" width="1600" height="600"></canvas>
+												<!-- Download Icon -->
+											<img src = "img/download.png"  id = "download_img" style = "float: right; display: none" width = "50px" height = "50px" ></i>
+											</a>
+											<canvas id = "canvas" width="1600" height="600"></canvas>
+										</div>
+										
+										
+									</div>
 									
                                 </div>
 							</section>
