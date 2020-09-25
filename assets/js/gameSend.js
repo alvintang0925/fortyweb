@@ -83,20 +83,20 @@ function select(t){
             type: 'line',
             data: bestLineChartData,
             options: {
-                responsive: true,
+                responsive: false,
                 legend:{
-                    display: true,
+                    display: false,
                 },
                 tooltips: {
-                    enabled: true
+                    enabled: false
                 },
                 scales: {
                     xAxes: [{
-                        display: true
+                        display: false
                     }],
                     yAxes: [{
                         // type: 'linear',
-                        display: true,
+                        display: false,
                         position: 'left',
                         id: 'y-axis-1',
                     }, 
