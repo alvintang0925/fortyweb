@@ -103,10 +103,12 @@ function preset(){
     var date_switch = true;
 
     while(date_switch){
-        if((current_month[0] >= end_month[0] && current_month[1] > end_month[1])){
+        if((current_month[0] == end_month[0] && current_month[1] > end_month[1]) || (current_month[0] > end_month[0])){
             date_switch = false;
         }else{
+            
             filename[count_f] = "DJI_30/M2M/train_" + current_month[0] + "_" + current_month[1] + "(" + current_month[0] + " Q1).csv";
+            console.log(filename[count_f]);
             count_f++;
             var m = parseInt(current_month[1])
             if(m < 12){

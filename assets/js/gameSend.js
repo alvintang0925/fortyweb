@@ -17,17 +17,33 @@ function sortSelect(a, b){
 }
 
 function select(t){
+    
     company_box = document.getElementsByName("company_box");
     var temp = parseInt(t.getAttribute("value"));
+
     if(!company_box[temp].checked){
         select_box.push(parseInt(company_box[temp].value));
+        if(t.getAttribute("name") == "my_select"){
+            company_box[temp].checked = true;
+            console.log("true");
+        }
     }else{
+        if(t.getAttribute("name") == "my_select"){
+            company_box[temp].checked = false;
+            console.log("false");
+        }
         for(var j = 0; j < select_box.length; j++){
             if(select_box[j] == temp){
                 select_box.splice(j,1);
             }
         }
     }
+    if(t.getAttribute("name") == "my_select"){
+        
+    }
+    console.log(t);
+
+    
 
     
     if(select_box.length != 0){
@@ -37,6 +53,14 @@ function select(t){
         var s = document.getElementById("show_data");
         s.setAttribute("style", "");
         select_box.sort(sortSelect);
+
+        var your_select = document.getElementById("your_select");
+        var temp = "";
+        for(var j = 0; j < select_box.length; j++){
+            temp += "<label onclick = 'select(this)' style = 'display: inline-block;' name = 'my_select' for='myCheckbox" + (select_box[j]+1) + "' value = '" + select_box[j] + "'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[select_box[j]] + ".png' /></label>\n";
+        }
+        your_select.innerHTML = "<label>你的選擇</label>" + temp;
+        
 
         var temp = [];
         temp[0] =  new STOCK();
@@ -116,6 +140,9 @@ function select(t){
         c.setAttribute("style", "background-color: white; display: none;")
         var s = document.getElementById("show_data");
         s.setAttribute("style", "display: none;");
+
+        var your_select = document.getElementById("your_select");
+        your_select.innerHTML = "";
     }
 
 

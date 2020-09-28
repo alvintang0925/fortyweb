@@ -109,6 +109,11 @@
 				0% { transform: rotate(0deg); }
 				100% { transform: rotate(360deg); }
             }
+
+            [name = "my_select"]{
+                margin: 0px;
+                padding: 0px;
+            }
         </style>
 	</head>
 	<body class="is-preload">
@@ -306,7 +311,7 @@
                                         </div>
                                         <div class = "chart" style = "width: 45%;">    
                                             <input type="checkbox" id="myCheckbox30" name = "company_box"  value = "29"/>
-                                            <label onclick = "select(this)" value = "29" for="myCheckbox30"><img src="img/UTX.png" /></label>
+                                            <label onclick = "select(this)" value = "29" for="myCheckbox30"><img src="img/XOM.png" /></label>
                                             <canvas id = "canvas30" style = "background-color: white;"></canvas>
                                         </div>
 
@@ -315,23 +320,28 @@
                                     </div>
                                     
                                 </div>
-                                <div class = "myDiv" style = "width: 55%;">
+                                <div class = "myDiv" id = "dataDiv" style = "width: 55%;">
                                     <div>
                                         <input type = "button" value="送出" onclick = "send(this)" id = "sendButton">
                                     </div>
-                                    <div>
-                                        <canvas id = "canvas0" style = "background-color: white; display: none;"></canvas>
+                                    <div >
+                                        <canvas id = "canvas0" style = "background-color: white; display: none;" width="600px"></canvas>
                                     </div>
-                                    <div id = "show_data" style = "display: none;" class = "fields">
-                                        <div class = "field quarter">
-                                            <label>你的趨勢值</label>
-                                            <input name = "myData" type = "text" value = "" disabled>
+                                    <div id = "your_select"></div>
+                                    
+                                    <form>
+                                        <div id = "show_data" style = "display: none;" class = "fields">
+                                            <div class = "field quarter">
+                                                <label>你的趨勢值</label>
+                                                <input name = "myData" type = "text" value = "" disabled>
+                                            </div>
+                                            <div class = "field quarter">
+                                                <label>你的風險</label>
+                                                <input name = "myData" type = "text" value = "" disabled>
+                                            </div>
                                         </div>
-                                        <div class = "field quarter">
-                                            <label>你的風險</label>
-                                            <input name = "myData" type = "text" value = "" disabled>
-                                        </div>
-                                    </div>
+                                        
+                                    </form>
                                 </div>
 							</section>
 
