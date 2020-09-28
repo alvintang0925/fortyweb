@@ -47,7 +47,7 @@ function start(){
         for(var j = 0; j < game_stock[0].counter; j++){
             temp += "<img width = 50 height = 50 src = 'img/" + company_name[game_stock[0].locate[j]] + ".png' />\n";
         }
-        myDiv2.innerHTML = "<label>Your Portfolio</label>" + temp;
+        myDiv2.innerHTML = "<label style = 'color: orange;'>Your Portfolio</label>" + temp;
     }
     myButton = document.getElementsByName("button");
     

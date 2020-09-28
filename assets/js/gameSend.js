@@ -2,10 +2,17 @@
 
 var company_box = [];
 var select_box = [];
+var best_select = [];
+var best_trend = 0;
+var best_risk = 0;
 function send(){
     $('#loading').show();
     mode = "game";
+    if(document.getElementById("use_best").checked){
+        select_box = best_select.slice(0);
+    }
     countFunds("GNQTS", 0.0004, 10000, 10, 1);
+
 }
 
 function sortSelect(a, b){
@@ -133,6 +140,26 @@ function select(t){
         myData = document.getElementsByName("myData");
         myData[0].value = temp[0].trend;
         myData[1].value = temp[0].daily_risk;
+
+        if(temp[0].trend > best_trend){
+            best_trend = temp[0].trend;
+            best_risk = temp[0].daily_risk;
+            best_select = select_box.slice(0);
+        }
+        var h = document.getElementById("history_data");
+        h.setAttribute("style", "");
+        var history_data = []
+        history_data = document.getElementsByName("historyData");
+        history_data[0].value = best_trend;
+        history_data[1].value = best_risk;
+        var history_best = document.getElementById("history_best");
+        var temp = "";
+        for(var j = 0; j < best_select.length; j++){
+            temp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select[j]] + ".png' /></label>\n";
+        }
+        console.log(history_best);
+        history_best.innerHTML = "<label>歷史最佳選擇</label>" + temp;
+        
         
     }else{
         myChart.destroy();
