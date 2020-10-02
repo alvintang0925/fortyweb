@@ -33,9 +33,10 @@ function sendBubble(){
                     // .attr("xlink:href", "img/black.png")
                     .attr("width", 0)
                     .attr("height", 0)
-                    .attr("x", (document.body.offsetWidth) / 2 - 300)
+                    .attr("x", (screen.availWidth) / 2 - 300)
                     .attr("y", 570)
                     .each('start',function(it){
+                        console.log(screen.availWidth);
                         it.r = 0;
                     });
 
@@ -201,7 +202,7 @@ function showBubble(){
         var c = 0;
         for(var i in d[0]){
             nodes[c] = {};
-            nodes[c].r = 20;
+            nodes[c].r = 30;
             nodes[c].idx = c;
             nodes[c].company = i;
             nodes[c].selected = false;
@@ -251,7 +252,7 @@ function showBubble(){
             .nodes(nodes)               // 綁定資料
             .size([800,600])            // 設定範圍
             .gravity(0.1)               //重力
-            .charge(-200)               //磁力
+            .charge(-300)               //磁力
             .on("tick", tick)           // 設定 tick 函式
             .start()                   // 啟動！
             .alpha(0.1);

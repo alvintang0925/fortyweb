@@ -60,8 +60,14 @@ function selectButton(e){
     // <canvas id = "canvas" style = "background-color:white;" width="1600" height="600"></canvas>
     var myCanvas = document.getElementById("canvas");
     myCanvas.setAttribute("style", "background-color:white;")
-    var show_data = document.getElementById("show_data");
-    show_data.style = "display: none";
+    var show_data = document.getElementsByName("show_data");
+    show_data[0].style = "display: none";
+    show_data[1].style = "display: none";
+
+    var myData = [];
+    myData = document.getElementsByName("myData");
+
+
 
 
 
@@ -355,9 +361,9 @@ function selectButton(e){
                 });
             } 
 
-            
 
             var barChartData = {
+                labels: ["Trend"],
                 datasets: dataset,
             };
 
@@ -419,8 +425,8 @@ function selectButton(e){
             break;
 
             case "COMPARE":
-            show_data.style = "";
-            console.log(show_data.style);
+            show_data[0].style = "";
+            show_data[1].style = "";
             dataset.push({
                 label : "best : " + exp_best_answer.company_name,
                     backgroundColor : "#FFD9EC",
@@ -500,10 +506,7 @@ function selectButton(e){
                     }
             });
 
-            var myData = [];
-            myData = document.getElementsByName("myData");
-            myData[0].value = exp_best_answer.trend;
-            myData[1].value = exp_best_answer.daily_risk;
+           
             myData[2].value = game_stock[0].trend;
             myData[3].value = game_stock[0].daily_risk;
 

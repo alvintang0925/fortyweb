@@ -50,6 +50,11 @@ function start(){
         myDiv2.innerHTML = "<label style = 'color: orange;'>Your Portfolio</label>" + temp;
     }
     myButton = document.getElementsByName("button");
+
+    var myData = [];
+    myData = document.getElementsByName("myData");
+    myData[0].value = exp_best_answer.trend;
+    myData[1].value = exp_best_answer.daily_risk;
     
     if(mode == "game"){
         myButton[myButton.length-1].setAttribute("style", "");
@@ -63,6 +68,7 @@ function start(){
         /*insert chart image url to download button (tag: <a></a>) */
         a.href = url_base64jp;
     });
+
     
 }
 

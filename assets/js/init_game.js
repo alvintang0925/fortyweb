@@ -2,7 +2,7 @@ var DAYNUMBER;
 var price = [];
 var company_name = [];
 function getData(){
-    d3.csv("DJI_30/M2M/train_2019_06(2019 Q1).csv", function(d){
+    d3.csv("DJI_30/M2M/train_2014_11(2014 Q1).csv", function(d){
         data = d
         DAYNUMBER = data.length;
         for(var j in data[0]){
