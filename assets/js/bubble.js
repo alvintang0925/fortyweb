@@ -36,7 +36,6 @@ function sendBubble(){
                     .attr("x", (screen.availWidth) / 2 - 300)
                     .attr("y", 570)
                     .each('start',function(it){
-                        console.log(screen.availWidth);
                         it.r = 0;
                     });
 
@@ -200,7 +199,8 @@ function showBubble(){
         
         
         var c = 0;
-        for(var i in d[0]){
+        for(var j = 0; j < replace_company.length; j++){
+            var i = replace_company[j];
             nodes[c] = {};
             nodes[c].r = 30;
             nodes[c].idx = c;

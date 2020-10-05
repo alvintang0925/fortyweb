@@ -102,6 +102,17 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
     if(data.length != 0){
         d3.csv("data/data4.csv", function(d){
             
+            console.log(data.length);
+            for(var j = 0; j < data.length; j++){
+                var temp = 0
+                for(var k in data[j]){
+                    if(replace_company[temp] != k){
+                        data[j][replace_company[temp]] = data[j][k];
+                        delete data[j][k];
+                    }
+                    temp++;
+                }
+            }
             if(mode == "general"){
                 for(var j = 0; j < bubble_list.length; j++){
                         s_company[j] = bubble_list[j].idx;
@@ -125,6 +136,7 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                 }
                 c++;
             }
+            console.log(company_name);
 
 
             var stock = [];

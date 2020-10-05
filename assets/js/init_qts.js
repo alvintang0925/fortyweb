@@ -1,4 +1,4 @@
-
+var replace_company = ["AAPL", "NFLX", "BA", "TSLA", "CSCO", "COST", "DIS", "C", "FORD", "AMD", "IBM", "INTC", "JNJ", "DELL", "KO", "MCD", "MMM", "ADBE", "MSFT", "NKE", "AMZN", "PG", "ORCL", "ZOOM", "NVDA", "V", "FB", "GOOGL", "SBUX", "HSY"];
 function start(){       
     var sendButton = document.getElementById("sendButton");
     sendButton.addEventListener("click", preset, false);
