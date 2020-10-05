@@ -212,6 +212,13 @@ function showBubble(){
             c++;
 
         }
+        nodes[0].x = 50;
+        nodes[0].y = 50;
+        nodes[15].x = 90;
+        nodes[15].y = 50;
+        nodes[19].x = 50;
+        nodes[19].y = 90;
+
         
         var node_drag = d3.behavior.drag()
             .on("dragstart", dragstart)

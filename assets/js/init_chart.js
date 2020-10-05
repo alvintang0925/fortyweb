@@ -9,11 +9,17 @@ var div_inner;
 var mode;
 var game_stock;
 var myButton ;
+var myChart;
+var myChart2;
+var ctx;
+var ctx2;
 function start(){       
     myDiv = document.getElementById("myDiv");
     myDiv2 = document.getElementById("myDiv2");
     ctx = document.getElementById("canvas").getContext("2d");
+    ctx2 = document.getElementById("canvas2").getContext("2d");
     myChart = new Chart(ctx,{});
+    myChart2 = new Chart(ctx2,{});
 
     if(window.localStorage){
         mode = localStorage.mode;
@@ -65,6 +71,14 @@ function start(){
         var url_base64jp = document.getElementById("canvas").toDataURL("image/jpg");
         /*get download button (tag: <a></a>) */
         var a =  document.getElementById("download");
+        /*insert chart image url to download button (tag: <a></a>) */
+        a.href = url_base64jp;
+    });
+    document.getElementById("download2").addEventListener('click', function(){
+        /*Get image of canvas element*/
+        var url_base64jp = document.getElementById("canvas2").toDataURL("image/jpg");
+        /*get download button (tag: <a></a>) */
+        var a =  document.getElementById("download2");
         /*insert chart image url to download button (tag: <a></a>) */
         a.href = url_base64jp;
     });
