@@ -6,6 +6,8 @@ var company_name = [];
 var s_company = [];
 var data = [];
 var box;
+var replace_company = ["AAPL", "NFLX", "BA", "TSLA", "CSCO", "COST", "DIS", "C", "FORD", "AMD", "IBM", "INTC", "JNJ", "DELL", "KO", "MCD", "MMM", "ADBE", "MSFT", "NKE", "AMZN", "PG", "ORCL", "ZOOM", "NVDA", "V", "FB", "GOOGL", "SBUX", "HSY"];
+
 
 function STOCK(){
     this.data = [];
@@ -102,17 +104,20 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
     if(data.length != 0){
         d3.csv("data/data4.csv", function(d){
             
-            console.log(data.length);
             for(var j = 0; j < data.length; j++){
                 var temp = 0
                 for(var k in data[j]){
-                    if(replace_company[temp] != k){
-                        data[j][replace_company[temp]] = data[j][k];
-                        delete data[j][k];
-                    }
+                    var t = data[j][k];
+                    delete data[j][k];
+                        data[j][replace_company[temp]] = t;
+                    
                     temp++;
                 }
+                delete data[j]["undefined"];
             }
+            
+
+            console.log(data);
             if(mode == "general"){
                 for(var j = 0; j < bubble_list.length; j++){
                         s_company[j] = bubble_list[j].idx;
@@ -330,7 +335,11 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                     var temp = "company_name" + j;
                     localStorage[temp] = JSON.stringify(company_name[j]);
                 }
-                window.location.href = 'chart.html';//'https://alvintang0925.github.io/fortyweb/qts.html';
+                if(mode == "game"){
+                    window.location.href = 'chart.html?mode=game';
+                }else{
+                    window.location.href = 'chart.html?mode=general';//'https://alvintang0925.github.io/fortyweb/qts.html';
+                }
             } else {
                 console.log("NOT SUPPORT");
             }

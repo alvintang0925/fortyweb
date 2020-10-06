@@ -32,21 +32,16 @@ function select(t){
         select_box.push(parseInt(company_box[temp].value));
         if(t.getAttribute("name") == "my_select"){
             company_box[temp].checked = true;
-            console.log("true");
         }
     }else{
         if(t.getAttribute("name") == "my_select"){
             company_box[temp].checked = false;
-            console.log("false");
         }
         for(var j = 0; j < select_box.length; j++){
             if(select_box[j] == temp){
                 select_box.splice(j,1);
             }
         }
-    }
-    if(t.getAttribute("name") == "my_select"){
-        
     }
     console.log(t);
 

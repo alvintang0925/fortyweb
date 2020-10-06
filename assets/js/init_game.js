@@ -4,10 +4,28 @@ var company_name = [];
 function getData(){
     d3.csv("DJI_30/M2M/train_2014_11(2014 Q1).csv", function(d){
         data = d
+        console.log(data);
+        for(var j = 0; j < data.length; j++){
+            var temp = 0
+            for(var k in data[j]){
+                
+                
+                if(temp < 31){
+                    var t = data[j][k]
+                    delete data[j][k];
+                    data[j][replace_company[temp]] = t;
+                }
+                temp++;
+            }
+        }
+        
+        delete data[0]["undefined"];
+        
         DAYNUMBER = data.length;
         for(var j in data[0]){
             company_name.push(j);
         }
+        console.log(company_name);
         for(var j = 0; j < 30; j++){
             price[j] = [];
             for(var k = 0; k < DAYNUMBER; k++){
@@ -75,7 +93,7 @@ function start(){
                     }],
                     yAxes: [{
                         // type: 'linear',
-                        display: true,
+                        display: false,
                         position: 'left',
                         id: 'y-axis-1',
                         gridLines: {

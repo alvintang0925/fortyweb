@@ -128,7 +128,6 @@ function preset(){
     }
 
     var QTSTYPE = document.getElementById("qts_list").value;
-    console.log(QTSTYPE);
     var DELTA = parseFloat(document.getElementById("delta").value);
     var RUNTIMES = parseInt(document.getElementById("runtimes").value);
     var STOCKNUMBER = parseInt(document.getElementById("stock_number").value);
