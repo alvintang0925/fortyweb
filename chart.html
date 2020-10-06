@@ -1,136 +1,161 @@
-<!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>QTS</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
-		<style type = text/css>
-			
-		</style>
-        <script src="https://d3js.org/d3.v3.min.js"></script>
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-		<script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-		<script src = "assets/js/init_chart.js"></script>
-        <script src = "assets/js/drawChart.js"></script>
-        <script src = "assets/js/QTS.js"></script>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Win The Jackpot </title>
+    <!--改籤頁的標題 -->
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://jean870809.github.io/ruby/index.html">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="">
 
-				<!-- Header -->
-				<!-- Note: The "styleN" class below should match that of the banner element. -->
-					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>WIN</strong> <span>THE JACKPOT</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <link rel="canonical" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+    <link rel="stylesheet" href="dawho1.css">
+    <link rel="stylesheet" href="dawho2.css">
+    <link rel="stylesheet" href="style_chart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
 
-				<!-- Banner -->
-				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="innner" class="style2">
-						<div id="root">
-                            <input type = "button" class = "button" value = "PORTFOLIO" name = "button" onclick = "selectButton(this)" id = "portfolioButton">
-                            <input type = "button" class = "button" value = "FUND" name = "button" onclick = "selectButton(this)" id = "fundButton">
-							<input type = "button" class = "button" value = "TREND & DAILY RISK" name = "button" onclick = "selectButton(this)" id = "trendButton">
-							<input type = "button" class = "button" value = "COMPARE" style="display:none;" name = "button" onclick = "selectButton(this)" id = "compareButton">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="assets/js/init_chart.js"></script>
+    <script src="assets/js/drawChart.js"></script>
+    <script src="assets/js/QTS.js"></script>
+
+
+
+</head>
+
+<body class="f_HanSans_light">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NS27F8N" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div id="menu">
+        <div class="container">
+            <header class="head">
+                <input id="control_menu" type="checkbox" name="checkbox">
+                <div class="menu font_Gen_bold">
+                    <a class="logo_a" href="./"><img class="logo" src="image1.png"></a>
+                    <a class="btn_label">
+                        <label class="label_block" for="control_menu"></label></a>
+                    <nav class="nav"><a class="menu_item" href="https://jean870809.github.io/ruby/index.html">Home</a><a
+                            class="menu_item" href="https://ceciliehsu.github.io/html5up-forty/market.html">Market</a>
+                        <a class="menu_item" href="https://alvintang0925.github.io/fortyweb/qts.html">Watchlist</a><a
+                            class="menu_item" href="./faq/account/">News</a><a class="menu_item"
+                            href="https://becks9908.github.io/myweb/tablee.html">Game</a>
+                        <a class="menu_item" href="./how/prepare/">Setting</a>
+                        <a class="btn_gold shadow menu_btn_gold" href="login.html" id="name">登入</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
+
+
+
+    <!-- Main -->
+    <div id="main">
+        <section id="innner" class="style2">
+            <div id="root">
+                <input type="button" class="button" value="PORTFOLIO" name="button" onclick="selectButton(this)"
+                    id="portfolioButton">
+                <input type="button" class="button" value="FUND" name="button" onclick="selectButton(this)"
+                    id="fundButton">
+                <input type="button" class="button" value="TREND & DAILY RISK" name="button"
+                    onclick="selectButton(this)" id="trendButton">
+                <input type="button" class="button" value="COMPARE" style="display:none;" name="button"
+                    onclick="selectButton(this)" id="compareButton">
+            </div>
+        </section>
+        <section id="two" class="spotlights">
+            <div class="inner" id="div">
+                <div id="myDiv"></div>
+                <div id="myDiv2"></div>
+                <div>
+                    <form>
+                        <div class="fields">
+                            <div class="field quarter">
+                                <label>最佳趨勢值</label>
+                                <input name="myData" type="text" value="" disabled>
+                            </div>
+                            <div class="field quarter">
+                                <label>最佳風險</label>
+                                <input name="myData" type="text" value="" disabled>
+                            </div>
+                            <div class="field quarter" name="show_data" style="display: none;">
+                                <label style='color: orange;'>你的趨勢值</label>
+                                <input name="myData" type="text" value="" disabled>
+                            </div>
+                            <div class="field quarter" name="show_data" style="display: none;">
+                                <label style='color: orange;'>你的風險</label>
+                                <input name="myData" type="text" value="" disabled>
+                            </div>
                         </div>
-					</section>
+                    </form>
+                    <div>
+                        <a id="download" download="ChartImage" href="" class="" title="" width="50px" height="50px">
 
-				<!-- Main -->
-					<div id="main">
-                            
-                            <section id="two" class="spotlights">
-								<div class = "inner" id = "div">
-									<div id = "myDiv"></div>
-									<div id = "myDiv2"></div>
-									<div>
-										<form>
-											<div class = "fields" >
-												<div class = "field quarter">
-													<label>最佳趨勢值</label>
-													<input name = "myData" type = "text" value = "" disabled>
-												</div>
-												<div class = "field quarter">
-													<label>最佳風險</label>
-													<input name = "myData" type = "text" value = "" disabled>
-												</div>
-												<div name = "show_data" style="display: none;" class = "field quarter">
-													<label style = 'color: orange;'>你的趨勢值</label>
-													<input name = "myData" type = "text" value = "" disabled>
-												</div>
-												<div name = "show_data" style="display: none;" class = "field quarter">
-													<label style = 'color: orange;'>你的風險</label>
-													<input name = "myData" type = "text" value = "" disabled>
-												</div>
-											</div>
-										</form>
-										<div>
-											<a id="download"
-												download="ChartImage" 
-												href=""
-												class=""
-												title="" width = "50px" height = "50px">
+                            <!-- Download Icon -->
+                            <img src="img/download.png" id="download_img" style="float: right; display: none"
+                                width="50px" height="50px"></i>
+                        </a>
+                        <canvas id="canvas" style="width: 100%;"></canvas>
+                        <br>
+                        <a id="download2" download="ChartImage2" href="" class="" title="" width="50px" height="50px">
 
-												<!-- Download Icon -->
-											<img src = "img/download.png"  id = "download_img" style = "float: right; display: none" width = "50px" height = "50px" ></i>
-											</a>
-											<canvas id = "canvas" style = "width: 100%;"></canvas>
-											<br>
-											<a id="download2"
-												download="ChartImage2" 
-												href=""
-												class=""
-												title="" width = "50px" height = "50px">
+                            <!-- Download Icon -->
+                            <img src="img/download.png" id="download_img2" style="float: right; display: none"
+                                width="50px" height="50px"></i>
+                        </a>
+                        <canvas id="canvas2" style="width: 100%;"></canvas>
+                    </div>
 
-												<!-- Download Icon -->
-											<img src = "img/download.png"  id = "download_img2" style = "float: right; display: none" width = "50px" height = "50px" ></i>
-											</a>
-											<canvas id = "canvas2" style = "width: 100%;"></canvas>
-										</div>
-										
-										
-									</div>
-									
-                                </div>
-							</section>
 
-					</div>
+                </div>
 
-			</div>
+            </div>
+        </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
+    </div>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        var name = $.cookie('googlename')
+        console.log(name);
+        if (name != 'undefined') {
+            document.getElementById('name').innerHTML = name;
+            document.getElementById('name').setAttribute("href", "javascript: void(0)");
+        }
+    </script>
+
+</body>
+
 </html>

@@ -1,7 +1,6 @@
 
 
 var company_box = [];
-var select_box = [];
 var best_select = [];
 var best_trend = 0;
 var best_risk = 0;
@@ -43,7 +42,6 @@ function select(t){
             }
         }
     }
-    console.log(t);
 
     
 

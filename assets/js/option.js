@@ -94,7 +94,8 @@ function preset(){
     data_list_count = 0;
     filename = [];
     count_f = 0;
-    mode = "general"
+    mode = document.getElementById("mode").value;
+    
     var start_month = document.getElementById("start_month").value;
     var end_month = document.getElementById("end_month").value;
     start_month = start_month.split("-");

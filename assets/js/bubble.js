@@ -46,6 +46,10 @@ function sendBubble(){
             }
         }
     }
+    if(mode == "game"){
+        select_box = bubble_list.splice(0);
+    }
+
     var bubble_send = document.getElementById("bubble_send");
     bubble_send.play();
     select_bubble_add = [];

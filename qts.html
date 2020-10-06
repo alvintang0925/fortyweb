@@ -1,19 +1,34 @@
-<!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>QTS</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style type = text/css>
-			
-			#loading {
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>Win The Jackpot </title>
+    <!--改籤頁的標題 -->
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://jean870809.github.io/ruby/index.html">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="">
+    <link rel="canonical" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="stylesheet" href="dawho1.css">
+    <link rel="stylesheet" href="dawho2.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <style type=text/css>
+        #loading {
 				border-top: 16px solid blue;
 				border-right: 16px solid green;
 				border-bottom: 16px solid red;
@@ -32,222 +47,150 @@
 				0% { transform: rotate(0deg); }
 				100% { transform: rotate(360deg); }
 				}
-		</style>
-		
+    </style>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="assets/js/init_qts.js"></script>
+    <script src="assets/js/bubble.js"></script>
+    <script src="assets/js/option.js"></script>
+    <script src="assets/js/QTS.js"></script>
 
-        <link rel="shortcut icon" href="#"/>
-	</head>
-	<body class="is-preload">
+</head>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<body class="f_HanSans_light">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NS27F8N" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div id="menu">
+        <div class="container">
+            <header class="head">
+                <input id="control_menu" type="checkbox" name="checkbox">
+                <div class="menu font_Gen_bold">
+                    <a class="logo_a" href="./"><img class="logo" src="image1.png"></a>
+                    <a class="btn_label">
+                        <label class="label_block" for="control_menu"></label></a>
+                    <nav class="nav"><a class="menu_item" href="https://jean870809.github.io/ruby/index.html">Home</a><a
+                            class="menu_item" href="https://ceciliehsu.github.io/html5up-forty/market.html">Market</a>
+                        <a class="menu_item" href="https://alvintang0925.github.io/fortyweb/qts.html">Watchlist</a><a
+                            class="menu_item" href="./faq/account/">News</a><a class="menu_item"
+                            href="https://becks9908.github.io/myweb/tablee.html">Game</a>
+                        <a class="menu_item" href="./how/prepare/">Setting</a>
+                        <a class="btn_gold shadow menu_btn_gold" href="login.html" id="name">登入</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
 
-				<!-- Header -->
-				<!-- Note: The "styleN" class below should match that of the banner element. -->
-					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>WIN</strong> <span>THE JACKPOT</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <div id="main">
+        <!-- Banner -->
+        <!-- Note: The "styleN" class below should match that of the header element. -->
+        <section id="innner" class="style2">
+            <div id="root">
+                <svg width="100%" height="700px" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid"></svg>
+                <div id='loading'>
+                    
+                </div>
+                <audio id="bubble_click">
+                    <source = src="mp3/bubble_click.mp3" type="audio/mp3">
+                </audio>
+                <audio id="bubble_reset">
+                    <source = src="mp3/bubble_reset.mp3" type="audio/mp3">
+                </audio>
+                <audio id="bubble_send">
+                    <source = src="mp3/bubble_send.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </section>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
 
-				<!-- Banner -->
-				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="innner" class="style2">
-						<div id="root">
-							<svg width="100%" height="100vh" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid"></svg>
-							<div id='loading'>
-								<!-- <img src = "img/loading.svg"/> -->
-							</div>
-                            <audio id="bubble_click">
-                                <source = src="mp3/bubble_click.mp3" type="audio/mp3">
-                            </audio>
-                            <audio id="bubble_reset">
-                                <source = src="mp3/bubble_reset.mp3" type="audio/mp3">
-                            </audio>
-                            <audio id="bubble_send">
-                                <source = src="mp3/bubble_send.mp3" type="audio/mp3">
-                            </audio>
+
+        <!-- One -->
+        <section id="one" style="background-color: #2f466e; ">
+            <div class="inner">
+                <section>
+                    <form>
+                        <div class="fields">
+                            <div class="field third">
+                                <input type="button" class="button" value="重設" id="resetButton">
+                            </div>
+                            <div class="field third">
+                                <input type="button" value="全選" id="allButton">
+                            </div>
+                            <div class="field third">
+                                <input type="button" value="送出" id="sendButton">
+                            </div>
                         </div>
-					</section>
+                        <div class="fields">
+                            <div class="field quarter">
+                                <label for="name">旋轉角度</label>
+                                <input type="text" value="0.0004" id="delta">
+                            </div>
+                            <div class="field quarter">
+                                <label for="name">執行次數</label>
+                                <input type="text" value="10000" id="runtimes">
+                            </div>
+                            <div class="field quarter">
+                                <label for="name">粒子數</label>
+                                <input type="text" value="10" id="stock_number">
+                            </div>
+                            <div class="field quarter">
+                                <label for="name">實驗次數</label>
+                                <input type="text" value="1" id="exp_number">
+                            </div>
+                        </div>
+                        <div class="fields" >
+                            <div class="field quarter">
+								<label>演算法</label>
+                                <select name="qts" id="qts_list">
+                                    <option value="QTS">QTS</option>
+                                    <option value="GQTS">GQTS</option>
+                                    <option value="GNQTS" selected>GNQTS</option>
+                                </select>
+                            </div>
+                            <div class="field quarter">
 
-				<!-- Main -->
-					<div id="main">
+                                <label>開始月份</label>
+                                <input type="month" min="2009-12" max="2019-11" value="2017-02" id="start_month" />
+                            </div>
+                            <div class="field quarter">
+                                <label>結束月份</label>
+                                <input type="month" min="2010-01" max="2019-12" value="2017-02" id="end_month" />
+							</div>
+							<div class="field quarter">
+								<label>模式</label>
+                                <select id="mode">
+									<option value="general" selected>GENERAL</option>
+									<option value="game">GAME</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </section>
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-                                    <section>
-                                        <form>
-                                            <div class = "fields">
-                                                <div class = "field third">
-                                                    <input type = "button" class = "button" value="重設" id = "resetButton">
-                                                </div>
-                                                <div class = "field third">
-                                                    <input type = "button" value="全選" id = "allButton">
-                                                </div>
-                                                <div class = "field third">
-                                                    <input type = "button" value="送出" id = "sendButton">
-                                                </div>
-                                            </div>
-                                            <div class = "fields">
-                                                <div class = "field quarter">
-                                                    <label >旋轉角度</label>
-                                                    <input type = "text" value="0.0004" id = "delta">
-                                                </div>
-                                                <div class = "field quarter">
-                                                    <label >執行次數</label>
-                                                    <input type = "text" value="10000" id = "runtimes">
-                                                </div>
-                                                <div class = "field quarter">
-                                                    <label >粒子數</label>
-                                                    <input type = "text" value="10" id = "stock_number">
-                                                </div>
-                                                <div class = "field quarter">
-                                                    <label >實驗次數</label>
-                                                    <input type = "text" value="1" id = "exp_number">
-                                                </div>
-                                            </div>
-                                            <div class = "fields">
-                                                <div class = "field quarter">
-													<label >演算法</label>
-                                                    <select name = "qts" id = "qts_list">
-                                                        <option value = "QTS">QTS</option>
-                                                        <option value = "GQTS">GQTS</option>
-                                                        <option value = "GNQTS" selected>GNQTS</option>
-                                                    </select>
-                                                </div>
-                                                <div class = "field quarter">
-                                                    
-                                                        <label >開始月份</label>
-                                                        <input type="month" min="2009-12" max = "2019-11" value = "2017-02" id="start_month" />
-                                                </div>
-                                                <div class = "field quarter">
-                                                        <label >結束月份</label>
-                                                        <input type="month" min="2010-01" max = "2019-12" value = "2017-02" id="end_month" />
-												</div>
+ 
+    </div>
 
-												
-												
-											</div>
-                                        </form>
-                                    </section>
-								</div>
-							</section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        var name = $.cookie('googlename')
+        console.log(name);
+        if (name != 'undefined') {
+            document.getElementById('name').innerHTML = name;
+            document.getElementById('name').setAttribute("href", "javascript: void(0)");
+        }
+    </script>
 
-						
+</body>
 
-					</div>
-
-				<!-- Contact -->
-					<section id="contact">
-						<div class="inner">
-							<section>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="6"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
-								</form>
-							</section>
-							<section class="split">
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-envelope"></span>
-										<h3>Email</h3>
-										<a href="#">information@untitled.tld</a>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-phone"></span>
-										<h3>Phone</h3>
-										<span>(000) 000-0000 x12387</span>
-									</div>
-								</section>
-								<section>
-									<div class="contact-method">
-										<span class="icon solid alt fa-home"></span>
-										<h3>Address</h3>
-										<span>1234 Somewhere Road #5432<br />
-										Nashville, TN 00000<br />
-										United States of America</span>
-									</div>
-								</section>
-							</section>
-						</div>
-					</section>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="https://d3js.org/d3.v3.min.js"></script>
-			<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-			<script src = "assets/js/init_qts.js"></script>
-			<script src = "assets/js/bubble.js"></script>
-			<script src = "assets/js/option.js"></script>
-			<script src = "assets/js/QTS.js"></script>
-			<script>
-				$(function () {
-					var scrollVal = $(this).scrollTop();
-					//console.log(scrollVal);
-					$(window).scroll(function () {
-					var scrollVal = $(this).scrollTop();
-					//console.log(scrollVal);
-					});
-				});
-			</script>
-
-	</body>
 </html>

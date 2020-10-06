@@ -120,6 +120,24 @@
                 padding: 0px;
             }
 
+            #system_answer{
+                z-index: 9999; 
+                position: fixed; 
+                right: 0px; 
+                top: 150px;
+                position: absolute;
+                background-color: black;
+            }
+
+            #answer_button{
+                z-index: 9999; 
+                position: fixed; 
+                right: 0px; 
+                top: 85px;
+                position: absolute;
+                background-color: black;
+            }
+
             /* The switch - the box around the slider */
             .switch {
             position: relative;
@@ -230,7 +248,7 @@
 						<!-- One -->
 							<section id="one">
                                 
-								<div class = "myDiv" style = "width:29vw; height: 90vh;">
+								<div class = "myDiv" style = "width:28vw; height: 90vh;">
                                     
                                     <div>
                                         
@@ -391,7 +409,7 @@
                                     </div>
                                     
                                 </div>
-                                <div class = "myDiv" id = "dataDiv" style = "width: 70vw;">
+                                <div class = "myDiv" id = "dataDiv" style = "width: 68vw;">
                                     <div>
                                         <input type = "button" value="送出" onclick = "send(this)" id = "sendButton">
                                         <!-- Rounded switch -->
@@ -400,10 +418,22 @@
                                             <input type="checkbox" id = "use_best">
                                             <span class="slider round"></span>
                                         </label>
-
-                                        
+                                        &MediumSpace;
+                                        &MediumSpace;
+                                        &MediumSpace;
+                                        &MediumSpace;
+                                        <input type = "button" value = "使用系統最佳解" id = "use_system_best" onclick="useSystemBest()">
+                                        <input id = "answer_button" type = "button" value="答案" onmouseover = "show_answer()" onmouseout="hide_answer()" id = "sendButton">
                                     </div>
                                     <br>
+                                    <div id = "system_answer" style = "display: none;">
+                                        <img style = "width: 300px; height: 150px;" src = "img/answer.png">
+                                        <label>趨勢值</label>
+                                        <input  type = "text" value = "0.923646068725844" disabled>
+                                        <label>風險</label>
+                                        <input  type = "text" value = "47780.72402807684" disabled>
+                                    </div>
+
                                     <div >
                                         <canvas id = "canvas0" style = "background-color: white; display: none;" width="600px"></canvas>
                                     </div>
