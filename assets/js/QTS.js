@@ -118,19 +118,20 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
             }
             
 
-            console.log(data);
+            
             if(mode == "general"){
                 for(var j = 0; j < bubble_list.length; j++){
                         s_company[j] = bubble_list[j].idx;
                 }
                 COMPANYNUMBER = bubble_list.length;
-                DAYNUMBER = data.length;
+                
             }else{
                 for(var j = 0; j < 30; j++){
                     s_company[j] = j;
                 }
                 COMPANYNUMBER = 30;
             }
+            DAYNUMBER = data.length;
 
             
             c = 0;
@@ -142,7 +143,7 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                 }
                 c++;
             }
-            console.log(company_name);
+            
 
 
             var stock = [];

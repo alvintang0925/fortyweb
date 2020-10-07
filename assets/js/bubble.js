@@ -46,8 +46,13 @@ function sendBubble(){
             }
         }
     }
+
     if(mode == "game"){
-        select_box = bubble_list.splice(0);
+        for(var j = 0; j < bubble_list.length; j++){
+            select_box[j] = bubble_list[j].idx;
+        }
+        
+        console.log(select_box);
     }
 
     var bubble_send = document.getElementById("bubble_send");
@@ -107,7 +112,6 @@ function clicked(d, i){
             }
         }
         select_bubble_add.push(this);
-        console.log(select_bubble);
     }else{
         d3.select(this).transition()
         .duration(700)    
