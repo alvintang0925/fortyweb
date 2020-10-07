@@ -1,32 +1,65 @@
-<!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>GAME</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <style type = "text/css">
-        
-            ul {
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>Win The Jackpot </title>
+    <!--改籤頁的標題 -->
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="https://jean870809.github.io/ruby/index.html">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="">
+    <link rel="canonical" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="stylesheet" href="dawho1.css">
+    <link rel="stylesheet" href="dawho2.css">
+    <link rel="stylesheet" href="style_game.css">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel='stylesheet' id='fontawesome-css' href='https://use.fontawesome.com/releases/v5.0.1/css/all.css?ver=4.9.1'
+        type='text/css' media='all' />
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <style type="text/css">
+        input[type="checkbox"],
+        input[type="radio"] {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            display: block;
+            float: left;
+            margin-right: -2em;
+            opacity: 0;
+            width: 1em;
+            z-index: -1;
+        }
+
+        ul {
             list-style-type: none;
-            }
+        }
 
-            li {
+        li {
             display: inline-block;
-            }
+        }
 
-            input[type="checkbox"][id^="cb"] {
+        input[type="checkbox"][id^="cb"] {
             display: none;
-            }
+        }
 
-            label {
-            
+        label {
+
             padding: 10px;
             display: block;
             position: relative;
@@ -38,11 +71,11 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            }
+        }
 
-            label::before {
-            background-color: #2f466e;
-            color: #2f466e;
+        label::before {
+            background-color: white;
+            color: white;
             content: " ";
             display: block;
             border-radius: 45%;
@@ -56,118 +89,122 @@
             line-height: 28px;
             transition-duration: 0.4s;
             transform: scale(0);
-            }
+        }
 
-            label img {
+        label img {
             height: 100px;
             width: 100px;
             transition-duration: 0.2s;
             transform-origin: 45% 45%;
-            }
+        }
 
-            :checked+label {
-            
-            }
 
-            :checked+label::before {
+        :checked+label::before {
             content: "✓";
             background-color: grey;
             transform: scale(1);
-            }
+        }
 
-            :checked+label img {
+        :checked+label img {
             transform: scale(0.7);
-            box-shadow: 0 0 5px #333;
             z-index: -1;
-            }
-            .chart{
-                display: inline-block;
-                padding: 1em; 
-            }
+        }
 
-            .chart label{
-                padding: 0;
-                margin: 0em;
-            }
+        .chart {
+            display: inline-block;
+            padding: 1em;
+        }
 
-            .myDiv {
-                display: inline-block;
-                height: 90vh;
-                overflow-y: auto;
-                overflow-x: hidden;
-            }
+        .chart label {
+            padding: 0;
+            margin: 0em;
+        }
 
-            .myDiv2 {
-                display: inline-block;
-                height: 90vh;
-                overflow-y: auto;
-                overflow-x: hidden;
+        .myDiv {
+            display: inline-block;
+            height: 90vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
 
-            }
-            
-            ::-webkit-scrollbar {display:none}
+        .myDiv2 {
+            display: inline-block;
+            height: 90vh;
+            overflow-y: auto;
+            overflow-x: hidden;
 
-            #loading {
-				border-top: 16px solid blue;
-				border-right: 16px solid green;
-				border-bottom: 16px solid red;
-				border-left: 16px solid pink;
-				border-radius: 50%;
-				left: 46%;
-				top: 47%;
-				position: fixed;
-				width: 120px;
-				height: 120px;
-				animation: spin 2s linear infinite;
-				display: none;
-				}
+        }
 
-				@keyframes spin {
-				0% { transform: rotate(0deg); }
-				100% { transform: rotate(360deg); }
-            }
+        ::-webkit-scrollbar {
+            display: none
+        }
 
-            [name = "my_select"], [name = "history_select"]{
-                margin: 0px;
-                padding: 0px;
+        #loading {
+            border-top: 16px solid blue;
+            border-right: 16px solid green;
+            border-bottom: 16px solid red;
+            border-left: 16px solid pink;
+            border-radius: 50%;
+            left: 46%;
+            top: 47%;
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
-            #system_answer{
-                z-index: 9999; 
-                position: fixed; 
-                right: 0px; 
-                top: 150px;
-                position: absolute;
-                background-color: black;
+            100% {
+                transform: rotate(360deg);
             }
+        }
 
-            #answer_button{
-                z-index: 9999; 
-                position: fixed; 
-                right: 0px; 
-                top: 85px;
-                position: absolute;
-                background-color: black;
-            }
+        [name="my_select"],
+        [name="history_select"] {
+            margin: 0px;
+            padding: 0px;
+        }
 
-            /* The switch - the box around the slider */
-            .switch {
+        #system_answer {
+            z-index: 9999;
+            position: fixed;
+            right: 0px;
+            top: 150px;
+            position: absolute;
+            background-color: #ffffff;
+        }
+
+        #answer_button {
+            z-index: 9999;
+            position: fixed;
+            right: 0px;
+            top: 85px;
+            position: absolute;
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
             position: relative;
             display: inline-block;
             width: 60px;
             height: 34px;
             top: 20px;
-            }
+        }
 
-            /* Hide default HTML checkbox */
-            .switch input {
+        /* Hide default HTML checkbox */
+        .switch input {
             opacity: 0;
             width: 0;
             height: 0;
-            }
+        }
 
-            /* The slider */
-            .slider {
+        /* The slider */
+        .slider {
             position: absolute;
             cursor: pointer;
             top: 0;
@@ -177,9 +214,9 @@
             background-color: #ccc;
             -webkit-transition: .4s;
             transition: .4s;
-            }
+        }
 
-            .slider:before {
+        .slider:before {
             position: absolute;
             content: "";
             height: 26px;
@@ -189,331 +226,332 @@
             background-color: white;
             -webkit-transition: .4s;
             transition: .4s;
-            }
+        }
 
-            input:checked + .slider {
+        input:checked+.slider {
             background-color: #2196F3;
-            }
+        }
 
-            input:focus + .slider {
+        input:focus+.slider {
             box-shadow: 0 0 1px #2196F3;
-            }
+        }
 
-            input:checked + .slider:before {
+        input:checked+.slider:before {
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
             transform: translateX(26px);
-            }
+        }
 
-            /* Rounded sliders */
-            .slider.round {
+        /* Rounded sliders */
+        .slider.round {
             border-radius: 34px;
-            }
+        }
 
-            .slider.round:before {
+        .slider.round:before {
             border-radius: 50%;
-            }
-        </style>
-	</head>
-	<body class="is-preload">
+        }
+    </style>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-				<!-- Note: The "styleN" class below should match that of the banner element. -->
-					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>WIN</strong> <span>THE JACKPOT</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+</head>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+<body class="f_HanSans_light">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NS27F8N" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <div id="menu">
+        <div class="container">
+            <header class="head">
+                <input id="control_menu" type="checkbox" name="checkbox">
+                <div class="menu font_Gen_bold">
+                    <a class="logo_a" href="./"><img class="logo" src="image1.png"></a>
+                    <a class="btn_label">
+                        <label class="label_block" for="control_menu"></label></a>
+                    <nav class="nav"><a class="menu_item" href="https://jean870809.github.io/ruby/index.html">Home</a><a
+                            class="menu_item" href="https://ceciliehsu.github.io/html5up-forty/market.html">Market</a>
+                        <a class="menu_item" href="https://alvintang0925.github.io/fortyweb/qts.html">QTS</a><a
+                            class="menu_item" href="./faq/account/">News</a><a class="menu_item"
+                            href="https://becks9908.github.io/myweb/ruby_card.html">Game</a>
+                        <a class="menu_item" href="./how/prepare/">Setting</a>
+                        <a class="btn_gold shadow menu_btn_gold" href="login.html" id="name">登入</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
 
-				<!-- Banner -->
-                <!-- Note: The "styleN" class below should match that of the header element. -->
-                <section id="innner" class="style2">
-                    <div id="root">
-                        <div id='loading'>
-                            <!-- <img src = "img/loading.svg"/> -->
+    <div id="main">
+        <section id="innner" class="style2">
+            <div id="root">
+                <div id='loading'>
+                    <!-- <img src = "img/loading.svg"/> -->
+                </div>
+            </div>
+        </section>
+        <!-- One -->
+        <section id="one">
+
+            <div class="myDiv" style="width:28vw; height: 90vh;">
+
+                <div>
+
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox1" name="company_box" value="0" />
+                        <label onclick="select(this)" value="0" for="myCheckbox1"><img src="img/AAPL.png" /></label>
+                        <canvas id="canvas1" style="background-color: #2f466e;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox2" name="company_box" value="1" />
+                        <label onclick="select(this)" value="1" for="myCheckbox2"><img src="img/NFLX.png" /></label>
+                        <canvas id="canvas2" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox3" name="company_box" value="2" />
+                        <label onclick="select(this)" value="2" for="myCheckbox3"><img src="img/BA.png" /></label>
+                        <canvas id="canvas3" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox4" name="company_box" value="3" />
+                        <label onclick="select(this)" value="3" for="myCheckbox4"><img src="img/TSLA.png" /></label>
+                        <canvas id="canvas4" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox5" name="company_box" value="4" />
+                        <label onclick="select(this)" value="4" for="myCheckbox5"><img src="img/CSCO.png" /></label>
+                        <canvas id="canvas5" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox6" name="company_box" value="5" />
+                        <label onclick="select(this)" value="5" for="myCheckbox6"><img src="img/COST.png" /></label>
+                        <canvas id="canvas6" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox7" name="company_box" value="6" />
+                        <label onclick="select(this)" value="6" for="myCheckbox7"><img src="img/DIS.png" /></label>
+                        <canvas id="canvas7" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox8" name="company_box" value="7" />
+                        <label onclick="select(this)" value="7" for="myCheckbox8"><img src="img/C.png" /></label>
+                        <canvas id="canvas8" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox9" name="company_box" value="8" />
+                        <label onclick="select(this)" value="8" for="myCheckbox9"><img src="img/FORD.png" /></label>
+                        <canvas id="canvas9" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox10" name="company_box" value="9" />
+                        <label onclick="select(this)" value="9" for="myCheckbox10"><img src="img/AMD.png" /></label>
+                        <canvas id="canvas10" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox11" name="company_box" value="10" />
+                        <label onclick="select(this)" value="10" for="myCheckbox11"><img src="img/IBM.png" /></label>
+                        <canvas id="canvas11" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox12" name="company_box" value="11" />
+                        <label onclick="select(this)" value="11" for="myCheckbox12"><img src="img/INTC.png" /></label>
+                        <canvas id="canvas12" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox13" name="company_box" value="12" />
+                        <label onclick="select(this)" value="12" for="myCheckbox13"><img src="img/JNJ.png" /></label>
+                        <canvas id="canvas13" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox14" name="company_box" value="13" />
+                        <label onclick="select(this)" value="13" for="myCheckbox14"><img src="img/DELL.png" /></label>
+                        <canvas id="canvas14" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox15" name="company_box" value="14" />
+                        <label onclick="select(this)" value="14" for="myCheckbox15"><img src="img/KO.png" /></label>
+                        <canvas id="canvas15" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox16" name="company_box" value="15" />
+                        <label onclick="select(this)" value="15" for="myCheckbox16"><img src="img/MCD.png" /></label>
+                        <canvas id="canvas16" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox17" name="company_box" value="16" />
+                        <label onclick="select(this)" value="16" for="myCheckbox17"><img src="img/MMM.png" /></label>
+                        <canvas id="canvas17" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox18" name="company_box" value="17" />
+                        <label onclick="select(this)" value="17" for="myCheckbox18"><img src="img/ADBE.png" /></label>
+                        <canvas id="canvas18" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox19" name="company_box" value="18" />
+                        <label onclick="select(this)" value="18" for="myCheckbox19"><img src="img/MSFT.png" /></label>
+                        <canvas id="canvas19" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox20" name="company_box" value="19" />
+                        <label onclick="select(this)" value="19" for="myCheckbox20"><img src="img/NKE.png" /></label>
+                        <canvas id="canvas20" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox21" name="company_box" value="20" />
+                        <label onclick="select(this)" value="20" for="myCheckbox21"><img src="img/AMZN.png" /></label>
+                        <canvas id="canvas21" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox22" name="company_box" value="21" />
+                        <label onclick="select(this)" value="21" for="myCheckbox22"><img src="img/PG.png" /></label>
+                        <canvas id="canvas22" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox23" name="company_box" value="22" />
+                        <label onclick="select(this)" value="22" for="myCheckbox23"><img src="img/ORCL.png" /></label>
+                        <canvas id="canvas23" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox24" name="company_box" value="23" />
+                        <label onclick="select(this)" value="23" for="myCheckbox24"><img src="img/ZOOM.png" /></label>
+                        <canvas id="canvas24" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox25" name="company_box" value="24" />
+                        <label onclick="select(this)" value="24" for="myCheckbox25"><img src="img/NVDA.png" /></label>
+                        <canvas id="canvas25" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox26" name="company_box" value="25" />
+                        <label onclick="select(this)" value="25" for="myCheckbox26"><img src="img/V.png" /></label>
+                        <canvas id="canvas26" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox27" name="company_box" value="26" />
+                        <label onclick="select(this)" value="26" for="myCheckbox27"><img src="img/FB.png" /></label>
+                        <canvas id="canvas27" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox28" name="company_box" value="27" />
+                        <label onclick="select(this)" value="27" for="myCheckbox28"><img src="img/GOOGL.png" /></label>
+                        <canvas id="canvas28" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox29" name="company_box" value="28" />
+                        <label onclick="select(this)" value="28" for="myCheckbox29"><img src="img/SBUX.png" /></label>
+                        <canvas id="canvas29" style="background-color: white;"></canvas>
+                    </div>
+                    <div class="chart" style="width: 45%;">
+                        <input type="checkbox" id="myCheckbox30" name="company_box" value="29" />
+                        <label onclick="select(this)" value="29" for="myCheckbox30"><img src="img/HSY.png" /></label>
+                        <canvas id="canvas30" style="background-color: white;"></canvas>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="myDiv2" id="dataDiv" style="width: 68vw;">
+                <div>
+                    <input type="button" value="送出" onclick="send(this)" id="sendButton">
+                    <!-- Rounded switch -->
+                    <strong>使用歷史最佳組合</strong>
+                    <label class="switch">
+                        <input type="checkbox" id="use_best">
+                        <span class="slider round"></span>
+                    </label>
+                    &MediumSpace;
+                    &MediumSpace;
+                    &MediumSpace;
+                    &MediumSpace;
+                    <input type="button" value="使用系統最佳解" id="use_system_best" onclick="useSystemBest()">
+                    <input id="answer_button" type="button" value="答案" onmouseover="show_answer()"
+                        onmouseout="hide_answer()" id="sendButton">
+                </div>
+                <br>
+                <div id="system_answer" style="display: none;">
+                    <img style="width: 300px; height: 150px;" src="img/answer.png">
+                    <label>趨勢值</label>
+                    <input type="text" value="0.923646068725844" disabled>
+                    <label>風險</label>
+                    <input type="text" value="47780.72402807684" disabled>
+                </div>
+
+                <div>
+                    <canvas id="canvas0" style="background-color: white; display: none;" width="600px"></canvas>
+                </div>
+
+
+
+                <form>
+                    <div class="fields">
+                        <div class="field half">
+                            <div id="your_select">
+                            </div>
+                            <div id="show_data" style="display: none;" class="fields">
+                                <div class="field quarter">
+                                    <label>你的趨勢值</label>
+                                    <input name="myData" type="text" value="" disabled>
+                                </div>
+                                <div class="field quarter">
+                                    <label>你的風險</label>
+                                    <input name="myData" type="text" value="" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="field half">
+                            <div id="history_best">
+                            </div>
+                            <div id="history_data" style="display: none;" class="fields">
+                                <div class="field quarter">
+                                    <label>歷史最佳趨勢值</label>
+                                    <input name="historyData" type="text" value="" disabled>
+                                </div>
+                                <div class="field quarter">
+                                    <label>歷史最佳風險</label>
+                                    <input name="historyData" type="text" value="" disabled>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </section>
-					
+                </form>
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- One -->
-							<section id="one">
-                                
-								<div class = "myDiv" style = "width:28vw; height: 90vh;">
-                                    
-                                    <div>
-                                        
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox1" name = "company_box"  value = "0"/>
-                                            <label onclick = "select(this)" value = "0" for="myCheckbox1" ><img src="img/AAPL.png"/></label>
-                                            <canvas id = "canvas1" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox2" name = "company_box"  value = "1"/>
-                                            <label onclick = "select(this)" value = "1" for="myCheckbox2"><img src="img/NFLX.png" /></label>
-                                            <canvas id = "canvas2" style = "background-color: white;"></canvas>
-                                        </div>
-                                        
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox3" name = "company_box"  value = "2"/>
-                                            <label onclick = "select(this)" value = "2" for="myCheckbox3"><img src="img/BA.png" /></label>
-                                            <canvas id = "canvas3" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox4" name = "company_box"  value = "3"/>
-                                            <label onclick = "select(this)" value = "3" for="myCheckbox4"><img src="img/TSLA.png" /></label>
-                                            <canvas id = "canvas4" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox5" name = "company_box"  value = "4"/>
-                                            <label onclick = "select(this)" value = "4" for="myCheckbox5"><img src="img/CSCO.png" /></label>
-                                            <canvas id = "canvas5" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox6" name = "company_box"  value = "5"/>
-                                            <label onclick = "select(this)" value = "5" for="myCheckbox6"><img src="img/COST.png" /></label>
-                                            <canvas id = "canvas6" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox7" name = "company_box"  value = "6"/>
-                                            <label onclick = "select(this)" value = "6" for="myCheckbox7"><img src="img/DIS.png" /></label>
-                                            <canvas id = "canvas7" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox8" name = "company_box"  value = "7"/>
-                                            <label onclick = "select(this)" value = "7" for="myCheckbox8"><img src="img/C.png" /></label>
-                                            <canvas id = "canvas8" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox9" name = "company_box"  value = "8"/>
-                                            <label onclick = "select(this)" value = "8" for="myCheckbox9"><img src="img/FORD.png" /></label>
-                                            <canvas id = "canvas9" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox10" name = "company_box"  value = "9"/>
-                                            <label onclick = "select(this)" value = "9" for="myCheckbox10"><img src="img/AMD.png" /></label>
-                                            <canvas id = "canvas10" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox11" name = "company_box"  value = "10"/>
-                                            <label onclick = "select(this)" value = "10" for="myCheckbox11"><img src="img/IBM.png" /></label>
-                                            <canvas id = "canvas11" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox12" name = "company_box"  value = "11"/>
-                                            <label onclick = "select(this)" value = "11" for="myCheckbox12"><img src="img/INTC.png" /></label>
-                                            <canvas id = "canvas12" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox13" name = "company_box"  value = "12"/>
-                                            <label onclick = "select(this)" value = "12" for="myCheckbox13"><img src="img/JNJ.png" /></label>
-                                            <canvas id = "canvas13" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox14" name = "company_box"  value = "13"/>
-                                            <label onclick = "select(this)" value = "13" for="myCheckbox14"><img src="img/DELL.png" /></label>
-                                            <canvas id = "canvas14" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox15" name = "company_box"  value = "14"/>
-                                            <label onclick = "select(this)" value = "14" for="myCheckbox15"><img src="img/KO.png" /></label>
-                                            <canvas id = "canvas15" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox16" name = "company_box"  value = "15"/>
-                                            <label onclick = "select(this)" value = "15" for="myCheckbox16"><img src="img/MCD.png" /></label>
-                                            <canvas id = "canvas16" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox17" name = "company_box"  value = "16"/>
-                                            <label onclick = "select(this)" value = "16" for="myCheckbox17"><img src="img/MMM.png" /></label>
-                                            <canvas id = "canvas17" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox18" name = "company_box"  value = "17"/>
-                                            <label onclick = "select(this)" value = "17" for="myCheckbox18"><img src="img/ADBE.png" /></label>
-                                            <canvas id = "canvas18" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox19" name = "company_box"  value = "18"/>
-                                            <label onclick = "select(this)" value = "18" for="myCheckbox19"><img src="img/MSFT.png" /></label>
-                                            <canvas id = "canvas19" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox20" name = "company_box"  value = "19"/>
-                                            <label onclick = "select(this)" value = "19" for="myCheckbox20"><img src="img/NKE.png" /></label>
-                                            <canvas id = "canvas20" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox21" name = "company_box"  value = "20"/>
-                                            <label onclick = "select(this)" value = "20" for="myCheckbox21"><img src="img/AMZN.png" /></label>
-                                            <canvas id = "canvas21" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox22" name = "company_box"  value = "21"/>
-                                            <label onclick = "select(this)" value = "21" for="myCheckbox22"><img src="img/PG.png" /></label>
-                                            <canvas id = "canvas22" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox23" name = "company_box"  value = "22"/>
-                                            <label onclick = "select(this)" value = "22" for="myCheckbox23"><img src="img/ORCL.png" /></label>
-                                            <canvas id = "canvas23" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox24" name = "company_box"  value = "23"/>
-                                            <label onclick = "select(this)" value = "23" for="myCheckbox24"><img src="img/ZOOM.png" /></label>
-                                            <canvas id = "canvas24" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox25" name = "company_box"  value = "24"/>
-                                            <label onclick = "select(this)" value = "24" for="myCheckbox25"><img src="img/NVDA.png" /></label>
-                                            <canvas id = "canvas25" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox26" name = "company_box"  value = "25"/>
-                                            <label onclick = "select(this)" value = "25" for="myCheckbox26"><img src="img/V.png" /></label>
-                                            <canvas id = "canvas26" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox27" name = "company_box"  value = "26"/>
-                                            <label onclick = "select(this)" value = "26" for="myCheckbox27"><img src="img/FB.png" /></label>
-                                            <canvas id = "canvas27" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox28" name = "company_box"  value = "27"/>
-                                            <label onclick = "select(this)" value = "27" for="myCheckbox28"><img src="img/GOOGL.png" /></label>
-                                            <canvas id = "canvas28" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox29" name = "company_box"  value = "28"/>
-                                            <label onclick = "select(this)" value = "28" for="myCheckbox29"><img src="img/SBUX.png" /></label>
-                                            <canvas id = "canvas29" style = "background-color: white;"></canvas>
-                                        </div>
-                                        <div class = "chart" style = "width: 45%;">    
-                                            <input type="checkbox" id="myCheckbox30" name = "company_box"  value = "29"/>
-                                            <label onclick = "select(this)" value = "29" for="myCheckbox30"><img src="img/HSY.png" /></label>
-                                            <canvas id = "canvas30" style = "background-color: white;"></canvas>
-                                        </div>
+            </div>
+        </section>
 
 
-                                        
-                                    </div>
-                                    
-                                </div>
-                                <div class = "myDiv2" id = "dataDiv" style = "width: 68vw;">
-                                    <div>
-                                        <input type = "button" value="送出" onclick = "send(this)" id = "sendButton">
-                                        <!-- Rounded switch -->
-                                        <strong>使用歷史最佳組合</strong>
-                                        <label class="switch">
-                                            <input type="checkbox" id = "use_best">
-                                            <span class="slider round"></span>
-                                        </label>
-                                        &MediumSpace;
-                                        &MediumSpace;
-                                        &MediumSpace;
-                                        &MediumSpace;
-                                        <input type = "button" value = "使用系統最佳解" id = "use_system_best" onclick="useSystemBest()">
-                                        <input id = "answer_button" type = "button" value="答案" onmouseover = "show_answer()" onmouseout="hide_answer()" id = "sendButton">
-                                    </div>
-                                    <br>
-                                    <div id = "system_answer" style = "display: none;">
-                                        <img style = "width: 300px; height: 150px;" src = "img/answer.png">
-                                        <label>趨勢值</label>
-                                        <input  type = "text" value = "0.923646068725844" disabled>
-                                        <label>風險</label>
-                                        <input  type = "text" value = "47780.72402807684" disabled>
-                                    </div>
+    </div>
 
-                                    <div >
-                                        <canvas id = "canvas0" style = "background-color: white; display: none;" width="600px"></canvas>
-                                    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+    <script src="assets/js/init_game.js"></script>
+    <script src="assets/js/gameSend.js"></script>
+    <script src="assets/js/QTS.js"></script>
 
-                                    
-                                    
-                                    <form>
-                                        <div class = "fields">
-                                            <div class = "field half">
-                                                <div id = "your_select">
-                                                </div>
-                                                <div id = "show_data" style = "display: none;" class = "fields">
-                                                    <div class = "field quarter">
-                                                        <label>你的趨勢值</label>
-                                                        <input name = "myData" type = "text" value = "" disabled>
-                                                    </div>
-                                                    <div class = "field quarter">
-                                                        <label>你的風險</label>
-                                                        <input name = "myData" type = "text" value = "" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-                                        
-                                        
-                                            <div class = "field half">
-                                        <div id = "history_best">
-                                        </div>
-                                        <div id = "history_data" style = "display: none;" class = "fields">
-                                            <div class = "field quarter">
-                                                <label>歷史最佳趨勢值</label>
-                                                <input name = "historyData" type = "text" value = "" disabled>
-                                            </div>
-                                            <div class = "field quarter">
-                                                <label>歷史最佳風險</label>
-                                                <input name = "historyData" type = "text" value = "" disabled>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </form>
 
-                                </div>
-							</section>
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        var name = $.cookie('googlename')
+        console.log(name);
+        if (name != 'undefined') {
+            document.getElementById('name').innerHTML = name;
+            document.getElementById('name').setAttribute("href", "javascript: void(0)");
+        }
+    </script>
 
-						
+</body>
 
-						
-
-					</div>
-
-				
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
-            <script src="https://d3js.org/d3.v3.min.js"></script>
-            <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-            <script src = "assets/js/init_game.js"></script>
-            <script src = "assets/js/gameSend.js"></script>
-            <script src = "assets/js/QTS.js"></script>
-
-	</body>
 </html>
