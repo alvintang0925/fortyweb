@@ -1,3 +1,6 @@
+@import url(fontawesome-all.min.css);
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -245,11 +248,11 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 
 input[type="checkbox"]+label, input[type="radio"]+label {
     text-decoration: none;
-    color:  #2f466e;
+    color:  #ffffff;
     cursor: pointer;
     display: inline-block;
     font-weight: 300;
-    padding-left: 2.65em;
+    padding-left: 2em;
     padding-right: 0.75em;
     position: relative;
 }
@@ -283,7 +286,7 @@ input[type="checkbox"]+label:before, input[type="radio"]+label:before {
 }
 
 input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:before {
-    background:  #2f466e;
+    background:  #ffffff;
     border-color: #9bf1ff;
     content: '\f00c';
     color:  #2f466e;
