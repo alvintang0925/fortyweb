@@ -54,6 +54,9 @@ function select(t){
         s.setAttribute("style", "");
         select_box.sort(sortSelect);
 
+        var d = document.getElementById("canvas_div");
+        d.setAttribute("style", "border-left: 1px black solid; border-bottom: 1px black solid;");
+
         var your_select = document.getElementById("your_select");
         var temp = "";
         for(var j = 0; j < select_box.length; j++){
@@ -160,6 +163,8 @@ function select(t){
         c.setAttribute("style", "background-color: white; display: none;")
         var s = document.getElementById("show_data");
         s.setAttribute("style", "display: none;");
+        var d = document.getElementById("canvas_div");
+        d.setAttribute("style", "display: none");
 
         var your_select = document.getElementById("your_select");
         your_select.innerHTML = "";
