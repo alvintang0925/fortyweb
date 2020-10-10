@@ -55,7 +55,7 @@ function select(t){
         select_box.sort(sortSelect);
 
         var d = document.getElementById("canvas_div");
-        d.setAttribute("style", "border-left: 1px black solid; border-bottom: 1px black solid;");
+        d.setAttribute("style", "width: 700px; border-left: 1px black solid; border-bottom: 1px black solid;");
 
         var your_select = document.getElementById("your_select");
         var temp = "";

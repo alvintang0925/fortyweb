@@ -2,36 +2,37 @@
 
 var company_color = {
     AAPL: "#4F4F4F",
-    AXP: "#8ecae6", 
-    BA: "#90f1ef",
-    CAT: "#7bf1a8",
-    CVX: "#1982c4",
-    DD: "#ff595e",
-    DIS: "#8093f1",
-    WBA: "#6a4c93",
-    HD: "#8ac926",
-    IBM: "#fdb833",
-    INTC: "#797893",
-    JNJ: "#FFF7CF",
+    NFLX: "#000000", 
+    FB: "#005AB5",
+    TSLA: "#CE0000",
+    COST: "#FF7575",
+    C: "#BE77FF",
+    DIS: "#D9006C",
+    FORD: "#000079",
+    AMD: "#006030",
+    IBM: "#00CACA",
+    INTC: "#0080FF",
+    JNJ: "#4D0000",
     MCD: "#ffdc5e",
     KO: "#ce4257",
     MMM: "#720026",
-    MRK: "#07beb8",
+    DELL: "#484891",
     NKE: "#a1c181",
-    PFE: "#81b29A",
-    PG: "#606c38",
-    TRV: "#005757",
-    UTX: "#ffd6e0",
+    ADBE: "#FF2D2D",
+    PG: "#A3D1D1",
+    AMZN: "#977C00",
+    ORCL: "#AE0000",
     V: "#f26845",
-    VZ: "#ef476f",
-    WMT: "#e500a4",
+    ZOOM: "#84C1FF",
+    NVDA: "#02C874",
     CSCO: "#a100f2",
-    GS: "#9c89b8",
-    JPM: "#f0a6ca",
+    BA: "#28004D",
+    GOOGL: "#FFF153",
     MSFT: "#efc3e6",
-    UNH: "#ffac81",
-    XOM: "#cdeac0"
+    SBUX: "#01814A",
+    HSY: "#600030"
 };
+var point_size = 30;
 var myColor = [];
 
 var timeFormat = 'MM/DD/YYYY' //'MM/DD/YYYY HH:mm';
@@ -121,6 +122,8 @@ function selectButton(e){
                     });
                 }
             }
+            var myImage = new Image(point_size,point_size);
+            myImage.src = "img/best.png";
             color = getRandomColor();
             dataset.push({
                     label : "best : " + exp_best_answer.company_name,
@@ -131,6 +134,7 @@ function selectButton(e){
                     data: exp_best_answer.chart_totalMoney,
                     fill : "1",
                     yAxisID: 'y-axis-2',
+                    pointStyle: myImage,
                 });
             dataset.push({
                 label : "trend",
@@ -145,7 +149,7 @@ function selectButton(e){
             });
             for(var j = 0; j < exp_best_answer.counter; j++){
                 var myIcon = [];
-                var myImage = new Image(15,15);
+                var myImage = new Image(point_size,point_size);
                 myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
                 color = getRandomColor();
                 dataset.push({
@@ -168,7 +172,7 @@ function selectButton(e){
                 labels: day_label,
                 datasets: dataset,
             }
-            myChart = new Chart(ctx,{
+            myChart = new Chart(ctx2,{
                 type: 'line',
                 data: bestLineChartData,
                 legend: {
@@ -256,8 +260,9 @@ function selectButton(e){
 
             for(var j = 0; j < exp_best_answer.counter; j++){
                 var myIcon = [];
-                var myImage = new Image(15,15);
+                var myImage = new Image(point_size,point_size);
                 myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
+                
                 color = getRandomColor();
                 dataset.push({
                     label : company_name[exp_best_answer.locate[j]],
@@ -278,7 +283,7 @@ function selectButton(e){
                 labels: day_label,
                 datasets: dataset,
             }
-            myChart2 = new Chart(ctx2,{
+            myChart2 = new Chart(ctx,{
                 type: 'line',
                 data: bestLineChartData,
                 legend: {
@@ -525,35 +530,45 @@ function selectButton(e){
                 var stock_copy2 = quickSort2(stock);
                 
                 // stock_copy2.reverse();
+                var risk_list = [];
+                var risk_label = [];
+                var img_list = [];
+                risk_list.push(exp_best_answer.daily_risk);
+                var temp_img = new Image(point_size,point_size);
+                temp_img.src = "img/best.png";
+                img_list.push(temp_img);
+                for(var j = 0; j < stock_copy2.length; j++){
+                    risk_list.push(stock_copy2[j].daily_risk);
+                    var temp_img = new Image(point_size, point_size);
+                    temp_img.src = "img/" + stock_copy2[j].company_name + ".png";
+                    img_list.push(temp_img);
+                }
                 dataset = [];
                 dataset.push({
-                    label : "best : " + exp_best_answer.company_name,
+                    label : "Daily risk line",
                     backgroundColor : "#FF0000",
                     borderColor : "#FF0000",
                     borderWidth : 1,
-                    data: [exp_best_answer.daily_risk],
+                    data: risk_list,
+                    fill: false,
+                    pointRadius: 5,
+                    pointStyle: img_list,
                 });
-                for(var j = 0; j < stock_copy.length; j++){
-                    color = getRandomColor();
-                    dataset.push({
-                        label : stock_copy2[j].company_name,
-                        backgroundColor : company_color[stock_copy2[j].company_name],
-                        borderColor : company_color[stock_copy2[j].company_name],
-                        borderWidth : 1,
-                        data: [stock_copy2[j].daily_risk],
-                    });
-                } 
+                
+                risk_label.push("best");
+                for(var j = 0; j < stock_copy2.length; j++){
+                    risk_label.push(stock_copy2[j].company_name);
+                }
 
                 var barChartData = {
-                    labels: ["Daily Risk"],
+                    labels: risk_label,
                     datasets: dataset,
                 };
-                var bar_max = stock_copy2[stock_copy2.length-1].daily_risk * 1.3;
-                var bar_min = -1 * bar_max;
+
 
     
                 myChart2 = new Chart(ctx2,{
-                    type: 'bar',
+                    type: 'line',
                     data: barChartData,
                     options: {
                         responsive: true,
@@ -567,21 +582,28 @@ function selectButton(e){
                                 yAxes: {
                                     type: 'linear',
                                     display: true,
-                                    position: 'left',
-                                    ticks: {
-                                        min: bar_min,
-                                        max: bar_max,
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Positive Stock',
-                                    },
-                                    
+                                    position: 'left',                                    
                                 }
                             },
     
                         }
                     });
+
+                //     var myImage = new Image(15,15);
+                // myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
+                // color = getRandomColor();
+                // dataset.push({
+                //     label : company_name[exp_best_answer.locate[j]],
+                //     borderDash: [5, 5],
+                //     lineTension : 0,
+                //     backgroundColor : company_color[company_name[exp_best_answer.locate[j]]],
+                //     borderColor : company_color[company_name[exp_best_answer.locate[j]]],
+                //     borderWidth : 1,
+                //     data: exp_best_answer.chart_fs[j],
+                //     fill : false,
+                //     pointRadius: 1,
+                //     pointStyle: myImage,
+                // });
 
 
             break;
