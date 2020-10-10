@@ -611,51 +611,55 @@ function selectButton(e){
             case "COMPARE":
             show_data[0].style = "";
             show_data[1].style = "";
+
+            dataset.push({
+                label : "best 趨勢線",
+                    backgroundColor : "#000000",
+                    borderColor : "#000000",
+                    borderWidth : 1,
+                    data: exp_best_answer.y_line,
+                    pointRadius : 0,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
             dataset.push({
                 label : "best : " + exp_best_answer.company_name,
                     backgroundColor : "#FFD9EC",
                     borderColor : "#FF0000",
                     borderWidth : 3,
                     data: exp_best_answer.totalMoney,
-                    fill : false,
-                    yAxisID: 'y-axis-1',
-            });
-
-            dataset.push({
-                label : "best 趨勢線",
-                    backgroundColor : "#000000",
-                    borderColor : "#000000",
-                    borderWidth : 3,
-                    data: exp_best_answer.y_line,
-                    pointRadius : 0,
                     fill : "-1",
                     yAxisID: 'y-axis-1',
             });
 
-            color = getRandomColor();
+            
+
+            
             
             dataset.push({
-                label : "你的答案",
-                    backgroundColor : color,
-                    borderColor : color,
-                    borderWidth : 1,
-                    data: game_stock[0].totalMoney,
-                    fill : false,
-                    yAxisID: 'y-axis-1',
-            });
-
-            color = getRandomColor();
-
-            dataset.push({
                 label : "你的趨勢線",
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : "#0072E3",
+                    borderColor : "#0072E3",
                     borderWidth : 1,
                     data: game_stock[0].y_line,
                     pointRadius : 0,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
+
+            dataset.push({
+                label : "你的答案",
+                    backgroundColor : "#79FF79",
+                    borderColor : "#00BB00",
+                    borderWidth : 3,
+                    data: game_stock[0].totalMoney,
                     fill : "-1",
                     yAxisID: 'y-axis-1',
             });
+
+        
+
+            
 
             
 

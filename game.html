@@ -187,69 +187,7 @@
             position: absolute;
         }
 
-        /* The switch - the box around the slider */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-            top: 20px;
-        }
-
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked+.slider {
-            background-color: #2196F3;
-        }
-
-        input:focus+.slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked+.slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
+        
     </style>
 
 
@@ -454,20 +392,7 @@
             </div>
             <div class="myDiv2" id="dataDiv" style="width: 68vw;">
                 <div>
-                    <input type="button" value="送出" onclick="send(this)" id="sendButton">
-                    <!-- Rounded switch -->
-                    <strong>使用歷史最佳組合</strong>
-                    <label class="switch">
-                        <input type="checkbox" id="use_best">
-                        <span class="slider round"></span>
-                    </label>
-                    &MediumSpace;
-                    &MediumSpace;
-                    &MediumSpace;
-                    &MediumSpace;
                     <input type="button" value="使用系統最佳解" id="use_system_best" onclick="useSystemBest()">
-                    <input id="answer_button" type="button" value="答案" onmouseover="show_answer()"
-                        onmouseout="hide_answer()" id="sendButton">
                 </div>
                 <br>
                 <div id="system_answer" style="display: none;">
@@ -486,7 +411,7 @@
 
                 <form>
                     <div class="fields">
-                        <div class="field third">
+                        <div class="field half">
                             <div id="your_select">
                             </div>
                             <div id="show_data" style="display: none;" class="fields">
@@ -503,16 +428,16 @@
 
 
 
-                        <div class="field third">
+                        <div class="field half">
                             <div id="history_best">
                             </div>
                             <div id="history_data" style="display: none;" class="fields">
                                 <div class="field quarter">
-                                    <label>歷史最佳趨勢值</label>
+                                    <label>玩家最佳趨勢值</label>
                                     <input name="historyData" type="text" value="" disabled>
                                 </div>
                                 <div class="field quarter">
-                                    <label>歷史最佳風險</label>
+                                    <label>玩家最佳風險</label>
                                     <input name="historyData" type="text" value="" disabled>
                                 </div>
                             </div>

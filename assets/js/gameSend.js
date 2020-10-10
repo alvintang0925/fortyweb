@@ -1,14 +1,13 @@
 
 
 var company_box = [];
-var best_select = [];
-var best_trend = 0;
-var best_risk = 0;
+
+
 function send(){
     $('#loading').show();
     mode = "game";
     if(document.getElementById("use_best").checked){
-        select_box = best_select.slice(0);
+        select_box = best_select.locate.slice(0);
     }
     countFunds("GNQTS", 0.0004, 10000, 10, 1);
 
@@ -80,6 +79,39 @@ function select(t){
         temp[0].init();
         temp = countTrend(temp);
 
+        var myData = [];
+        myData = document.getElementsByName("myData");
+        myData[0].value = temp[0].trend;
+        myData[1].value = temp[0].daily_risk;
+        if(temp[0].trend > best_select.trend){
+            best_select.trend = temp[0].trend;
+            best_select.totalMoney = temp[0].totalMoney;
+            best_select.risk = temp[0].daily_risk;
+            best_select.locate = select_box.slice(0);
+            if(window.localStorage){
+                localStorage.best_select = JSON.stringify(best_select);
+                console.log(best_select);
+                console.log(localStorage.best_select);
+            }else{
+                console.log("NOT SUPPORT");
+            }
+        }
+
+        var h = document.getElementById("history_data");
+        h.setAttribute("style", "");
+        var history_data = []
+        history_data = document.getElementsByName("historyData");
+        history_data[0].value = best_select.trend;
+        history_data[1].value = best_select.risk;
+        var history_best = document.getElementById("history_best");
+        var tp = "";
+        for(var j = 0; j < best_select.locate.length; j++){
+            tp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select.locate[j]] + ".png' /></label>\n";
+        }
+        history_best.innerHTML = "<label>玩家最佳選擇</label>" + tp;
+
+        console.log(best_select);
+
         var day_label = [];
         for(var j = 0; j < DAYNUMBER; j++){
             day_label.push("day "+(j+1));
@@ -87,16 +119,41 @@ function select(t){
 
         var dataset0 = [];
         dataset0.push({
-            label : "你的投資組合",
+            label : "你的組合",
             lineTension : 0.4,
-            backgroundColor : "#FFD9EC",
-            borderColor : "#FF0000",
+            backgroundColor : "#00DB00",
+            borderColor : "#00DB00",
             borderWidth : 1,
             pointRadius : 0.2,
             data: temp[0].totalMoney,
             fill : false,
             yAxisID: 'y-axis-1',
         });
+
+        dataset0.push({
+            label : "系統最佳組合",
+            lineTension : 0.4,
+            backgroundColor : "#FFD9EC",
+            borderColor : "#FF0000",
+            borderWidth : 1,
+            pointRadius : 0.2,
+            data: system_answer.totalMoney,
+            fill : false,
+            yAxisID: 'y-axis-1',
+        });
+
+        dataset0.push({
+            label : "玩家最佳組合",
+            lineTension : 0.4,
+            backgroundColor : "#2828FF",
+            borderColor : "#2828FF",
+            borderWidth : 1,
+            pointRadius : 0.2,
+            data: best_select.totalMoney,
+            fill : false,
+            yAxisID: 'y-axis-1',
+        });
+
 
 
         
@@ -112,7 +169,7 @@ function select(t){
             options: {
                 responsive: false,
                 legend:{
-                    display: false,
+                    display: true,
                 },
                 tooltips: {
                     enabled: false
@@ -132,29 +189,7 @@ function select(t){
             }
         });
 
-        var myData = [];
-        myData = document.getElementsByName("myData");
-        myData[0].value = temp[0].trend;
-        myData[1].value = temp[0].daily_risk;
-
-        if(temp[0].trend > best_trend){
-            best_trend = temp[0].trend;
-            best_risk = temp[0].daily_risk;
-            best_select = select_box.slice(0);
-        }
-        var h = document.getElementById("history_data");
-        h.setAttribute("style", "");
-        var history_data = []
-        history_data = document.getElementsByName("historyData");
-        history_data[0].value = best_trend;
-        history_data[1].value = best_risk;
-        var history_best = document.getElementById("history_best");
-        var temp = "";
-        for(var j = 0; j < best_select.length; j++){
-            temp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select[j]] + ".png' /></label>\n";
-        }
-        console.log(history_best);
-        history_best.innerHTML = "<label>歷史最佳選擇</label>" + temp;
+        
         
         
     }else{
