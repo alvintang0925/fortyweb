@@ -545,14 +545,38 @@ function selectButton(e){
                 }
                 dataset = [];
                 dataset.push({
+                    type: "line",
                     label : "Daily risk line",
                     backgroundColor : "#FF0000",
                     borderColor : "#FF0000",
                     borderWidth : 1,
                     data: risk_list,
                     fill: false,
-                    pointRadius: 5,
+                    pointRadius: 10,
                     pointStyle: img_list,
+                });
+
+
+                var bar_label = [];
+                var bar_color = [];
+                var bar_data = [];
+                bar_label.push(exp_best_answer.company_name);
+                bar_color.push("#FF0000");
+                bar_data.push(exp_best_answer.daily_risk);
+                for(var j = 0; j < stock_copy2.length; j++){
+                    bar_label.push(stock_copy2[j].company_name);
+                    bar_color.push(company_color[stock_copy2[j].company_name]);
+                    bar_data.push(stock_copy2[j].daily_risk);
+                }
+
+                dataset.push({
+                    type: "bar",
+                    label : bar_label,
+                    backgroundColor : bar_color,
+                    borderColor : bar_color,
+                    borderWidth : 1,
+                    data: bar_data,
+                    // fill: false,
                 });
                 
                 risk_label.push("best");
@@ -568,42 +592,28 @@ function selectButton(e){
 
     
                 myChart2 = new Chart(ctx2,{
-                    type: 'line',
+                    type: 'bar',
                     data: barChartData,
                     options: {
                         responsive: true,
                         legend: {
-                            position: 'top',
+                            // position: 'top',
+                            display: false,
                         },
-                        scales: {
-                                xAxes: [{
-                                    display: true
-                                }],
-                                yAxes: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'left',                                    
-                                }
-                            },
+                        // scales: {
+                        //         xAxes: [{
+                        //             display: true
+                        //         }],
+                        //         yAxes: {
+                        //             type: 'linear',
+                        //             display: true,
+                        //             position: 'left',                                    
+                        //         }
+                        //     },
     
                         }
-                    });
-
-                //     var myImage = new Image(15,15);
-                // myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
-                // color = getRandomColor();
-                // dataset.push({
-                //     label : company_name[exp_best_answer.locate[j]],
-                //     borderDash: [5, 5],
-                //     lineTension : 0,
-                //     backgroundColor : company_color[company_name[exp_best_answer.locate[j]]],
-                //     borderColor : company_color[company_name[exp_best_answer.locate[j]]],
-                //     borderWidth : 1,
-                //     data: exp_best_answer.chart_fs[j],
-                //     fill : false,
-                //     pointRadius: 1,
-                //     pointStyle: myImage,
-                // });
+                    }
+                    );
 
 
             break;
@@ -632,9 +642,6 @@ function selectButton(e){
                     yAxisID: 'y-axis-1',
             });
 
-            
-
-            
             
             dataset.push({
                 label : "你的趨勢線",

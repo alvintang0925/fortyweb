@@ -95,8 +95,12 @@ function select(t){
             }else{
                 console.log("NOT SUPPORT");
             }
-        }
 
+            
+        }
+        if(temp[0].trend > system_answer.trend){
+            alert("恭喜你找到比系統更好的組合！");
+        }
         var h = document.getElementById("history_data");
         h.setAttribute("style", "");
         var history_data = []
@@ -110,7 +114,6 @@ function select(t){
         }
         history_best.innerHTML = "<label>玩家最佳選擇</label>" + tp;
 
-        console.log(best_select);
 
         var day_label = [];
         for(var j = 0; j < DAYNUMBER; j++){

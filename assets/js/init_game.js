@@ -67,6 +67,11 @@ function useSystemBest(){
         best_select.totalMoney = temp[0].totalMoney;
         best_select.risk = temp[0].daily_risk;
         best_select.locate = select_box.slice(0);
+        
+    }
+
+    if(temp[0].trend > system_answer.trend){
+        alert("恭喜你找到比系統更好的組合！");
     }
     var h = document.getElementById("history_data");
     h.setAttribute("style", "");
