@@ -24,7 +24,6 @@ function selectALL(){
             select_bubble_add.push(images[0][j]);
         }
     }
-    console.log(select_bubble);
 
 }
 
@@ -70,17 +69,19 @@ function resetAll(){
             select_bubble_add = [];
         }
     }
-    console.log(select_bubble);
 }
 
 
 function temp(fn, c){
     if(c<count_f){
         d3.csv(fn, function(d){
-                data = data.concat(d);
-                c++;
-                
-                temp(filename[c],c);
+            for(var j = 0; j < d.length; j++){
+                stock_date.push(d[j].Date);    
+                delete d[j]["Date"];
+            }
+            data = data.concat(d);
+            c++;
+            temp(filename[c],c);
         });
     }
 }
@@ -108,8 +109,7 @@ function preset(){
             date_switch = false;
         }else{
             
-            filename[count_f] = "DJI_30/M2M/train_" + current_month[0] + "_" + current_month[1] + "(" + current_month[0] + " Q1).csv";
-            console.log(filename[count_f]);
+            filename[count_f] = "DJIA_30/M2M/train_" + current_month[0] + "_" + current_month[1] + "(" + current_month[0] + " Q1).csv";
             count_f++;
             var m = parseInt(current_month[1])
             if(m < 12){
@@ -135,7 +135,6 @@ function preset(){
     var EXPNUMBER = parseInt(document.getElementById("exp_number").value);
 
     sendBubble();
-    setTimeout(function(){$('#loading').show();}, 1000);
     
     temp(filename[0], 0)
     

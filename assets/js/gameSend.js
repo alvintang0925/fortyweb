@@ -90,8 +90,6 @@ function select(t){
             best_select.locate = select_box.slice(0);
             if(window.localStorage){
                 localStorage.best_select = JSON.stringify(best_select);
-                console.log(best_select);
-                console.log(localStorage.best_select);
             }else{
                 console.log("NOT SUPPORT");
             }

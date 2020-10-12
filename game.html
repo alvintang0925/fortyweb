@@ -244,7 +244,7 @@
                     </div>
                     <div class="chart" style="width: 45%;">
                         <input type="checkbox" id="myCheckbox2" name="company_box" value="1" />
-                        <label onclick="select(this)" value="1" for="myCheckbox2"><img src="img/SBUX.png" /></label>
+                        <label onclick="select(this)" value="1" for="myCheckbox2"><img src="img/NFLX.png" /></label>
                         <canvas id="canvas2" style="background-color: white; border-left:1px solid #000000;border-bottom:1px solid #000000;"></canvas>
                     </div>
                     <div class="chart" style="width: 45%;">
@@ -379,7 +379,7 @@
                     </div>
                     <div class="chart" style="width: 45%;">
                         <input type="checkbox" id="myCheckbox29" name="company_box" value="28" />
-                        <label onclick="select(this)" value="28" for="myCheckbox29"><img src="img/NFLX.png" /></label>
+                        <label onclick="select(this)" value="28" for="myCheckbox29"><img src="img/SBUX.png" /></label>
                         <canvas id="canvas29" style="background-color: white; border-left:1px solid #000000;border-bottom:1px solid #000000;"></canvas>
                     </div>
                     <div class="chart" style="width: 45%;">
@@ -396,15 +396,10 @@
             <div class="myDiv2" id="dataDiv" style="width: 68vw;">
                 <div>
                     <input type="button" value="使用系統最佳解" id="use_system_best" onclick="useSystemBest()">
+                    <input type="button" value="使用世界第一解" id="use_player_best" onclick="usePlayerBest()">
+                    
                 </div>
                 <br>
-                <div id="system_answer" style="display: none;">
-                    <img style="width: 300px; height: 150px;" src="img/answer.png">
-                    <label>趨勢值</label>
-                    <input type="text" value="0.923646068725844" disabled>
-                    <label>風險</label>
-                    <input type="text" value="47780.72402807684" disabled>
-                </div>
 
                 <div id = "canvas_div" style = " display: none;">
                     <canvas id="canvas0" style="background-color: white; display: none;" width="600px"></canvas>
@@ -436,11 +431,11 @@
                             </div>
                             <div id="history_data" style="display: none;" class="fields">
                                 <div class="field quarter">
-                                    <label>玩家最佳趨勢值</label>
+                                    <label>世界第一趨勢值</label>
                                     <input name="historyData" type="text" value="" disabled>
                                 </div>
                                 <div class="field quarter">
-                                    <label>玩家最佳風險</label>
+                                    <label>世界第一風險</label>
                                     <input name="historyData" type="text" value="" disabled>
                                 </div>
                             </div>
@@ -452,6 +447,10 @@
         </section>
 
 
+
+    </div>
+    <div id = "innner">
+        <input type="button" value="重設" id="reset" onclick="resetPlayerBest()">
     </div>
 
     <script src="assets/js/jquery.min.js"></script>

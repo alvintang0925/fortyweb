@@ -1,6 +1,7 @@
 var exp_best_answer;
 var stock = [];
 var company_name = [];
+var stock_date = [];
 var DAYNUMBER;
 var COMPANYNUMBER;
 var myDiv;
@@ -34,6 +35,11 @@ function start(){
         for(var j = 0; j < company_name_length; j++){
             var temp = "company_name" + j;
             company_name[j] = JSON.parse(localStorage[temp]);
+        }
+        var stock_date_length = parseInt(localStorage["stock_date_length"]);
+        for(var j = 0; j < stock_date_length; j++){
+            var temp = "stock_date" + j;
+            stock_date[j] = localStorage[temp];
         }
         DAYNUMBER = exp_best_answer.day;
         COMPANYNUMBER = company_name.length;

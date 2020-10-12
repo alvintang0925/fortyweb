@@ -3,11 +3,12 @@ var DAYNUMBER;
 var mode;
 var COMPANYNUMBER;
 var company_name = [];
+var stock_date = [];
 var s_company = [];
 var data = [];
 var box;
 var select_box = [];
-var replace_company = ["AAPL", "SBUX", "BA", "TSLA", "CSCO", "COST", "DIS", "C", "FORD", "AMD", "IBM", "INTC", "JNJ", "DELL", "KO", "MCD", "MMM", "ADBE", "MSFT", "NKE", "AMZN", "PG", "ORCL", "ZOOM", "NVDA", "V", "FB", "GOOGL", "NFLX", "HSY"];
+var replace_company = ["AAPL", "NFLX", "BA", "TSLA", "CSCO", "COST", "DIS", "C", "FORD", "AMD", "IBM", "INTC", "JNJ", "DELL", "KO", "MCD", "MMM", "ADBE", "MSFT", "NKE", "AMZN", "PG", "ORCL", "ZOOM", "NVDA", "V", "FB", "GOOGL", "SBUX", "HSY"];
 
 
 function STOCK(){
@@ -266,12 +267,8 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                         }
                     }
 
-                    if(best_answer.trend < good_answer.trend){
-                        
+                    if(best_answer.trend < good_answer.trend){                        
                         best_answer = good_answer;
-                    //     console.log("i = ", i);
-                    //     console.log(best_answer.counter);
-                    //     console.log(best_answer.trend);
                     }
                     
                     if(worst_answer.trend > bad_answer.trend){
@@ -336,6 +333,11 @@ function countFunds(QTSTYPE,DELTA, RUNTIMES, STOCKNUMBER, EXPNUMBER){
                 for(var j = 0; j < company_name.length; j++){
                     var temp = "company_name" + j;
                     localStorage[temp] = JSON.stringify(company_name[j]);
+                }
+                localStorage.stock_date_length = stock_date.length;
+                for(var j = 0; j < stock_date.length; j++){
+                    var temp = "stock_date" + j;
+                    localStorage[temp] = stock_date[j];
                 }
                 if(mode == "game"){
                     window.location.href = 'chart.html?mode=game';

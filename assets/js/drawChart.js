@@ -32,7 +32,7 @@ var company_color = {
     SBUX: "#01814A",
     HSY: "#600030"
 };
-var point_size = 30;
+var point_size = 20;
 var myColor = [];
 
 var timeFormat = 'MM/DD/YYYY' //'MM/DD/YYYY HH:mm';
@@ -87,7 +87,7 @@ function selectButton(e){
     var day_label = [];
     for(var j = 0; j < DAYNUMBER; j++){
         //day_label.push("day "+(j+1));
-        day_label.push(newDateString(j - DAYNUMBER));
+        day_label = stock_date;
     }
 
     var color = getRandomColor();
@@ -167,7 +167,6 @@ function selectButton(e){
                 });
             } 
 
-            
             var bestLineChartData = {
                 labels: day_label,
                 datasets: dataset,
@@ -194,7 +193,7 @@ function selectButton(e){
                     scales: {
                         xAxes: {
                             display: true,
-                            type: 'time',
+                            type: 'linear',
                             time: {
                                 parser: timeFormat,
                                 // round: 'day'
@@ -204,20 +203,6 @@ function selectButton(e){
                                 display: true,
                                 labelString: 'Date'
                             }
-                            // type: 'time',
-                            // distribution: 'series',
-                            // offset: true,
-                            // ticks: {
-                            //     major: {
-                            //         enabled: true,
-                            //         fontStyle: 'bold'
-                            //     },
-                            //     source: 'data',
-                            //     autoSkip: true,
-                            //     autoSkipPadding: 75,
-                            //     maxRotation: 0,
-                            //     sampleSize: 100
-                            // },
                         },
                         yAxes: [{
                             type: 'linear',
@@ -549,6 +534,7 @@ function selectButton(e){
                     label : "Daily risk line",
                     backgroundColor : "#FF0000",
                     borderColor : "#FF0000",
+                    lineTension : 0,
                     borderWidth : 1,
                     data: risk_list,
                     fill: false,

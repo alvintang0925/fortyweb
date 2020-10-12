@@ -37,6 +37,9 @@ function sendBubble(){
                     .attr("y", 570)
                     .each('start',function(it){
                         it.r = 0;
+                    })
+                    .each('end',function(it){
+                        $('#loading').show();
                     });
 
         for(var k = 0; k < nodes.length; k++){
@@ -51,8 +54,6 @@ function sendBubble(){
         for(var j = 0; j < bubble_list.length; j++){
             select_box[j] = bubble_list[j].idx;
         }
-        
-        console.log(select_box);
     }
 
     var bubble_send = document.getElementById("bubble_send");
@@ -135,7 +136,6 @@ function clicked(d, i){
                 select_bubble_add.splice(j,1);
             }
         }
-        console.log(select_bubble);
     }
 }
 
