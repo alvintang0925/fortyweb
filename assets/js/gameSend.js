@@ -110,7 +110,7 @@ function select(t){
         for(var j = 0; j < best_select.locate.length; j++){
             tp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select.locate[j]] + ".png' /></label>\n";
         }
-        history_best.innerHTML = "<label>玩家最佳選擇</label>" + tp;
+        history_best.innerHTML = "<label>世界第一選擇</label>" + tp;
 
 
         var day_label = [];
@@ -144,7 +144,7 @@ function select(t){
         });
 
         dataset0.push({
-            label : "玩家最佳組合",
+            label : "世界第一組合",
             lineTension : 0.4,
             backgroundColor : "#2828FF",
             borderColor : "#2828FF",
