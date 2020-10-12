@@ -2,36 +2,37 @@
 
 var company_color = {
     AAPL: "#4F4F4F",
-    AXP: "#8ecae6", 
-    BA: "#90f1ef",
-    CAT: "#7bf1a8",
-    CVX: "#1982c4",
-    DD: "#ff595e",
-    DIS: "#8093f1",
-    WBA: "#6a4c93",
-    HD: "#8ac926",
-    IBM: "#fdb833",
-    INTC: "#797893",
-    JNJ: "#FFF7CF",
+    NFLX: "#000000", 
+    FB: "#005AB5",
+    TSLA: "#CE0000",
+    COST: "#FF7575",
+    C: "#BE77FF",
+    DIS: "#D9006C",
+    FORD: "#000079",
+    AMD: "#006030",
+    IBM: "#00CACA",
+    INTC: "#0080FF",
+    JNJ: "#4D0000",
     MCD: "#ffdc5e",
     KO: "#ce4257",
     MMM: "#720026",
-    MRK: "#07beb8",
+    DELL: "#484891",
     NKE: "#a1c181",
-    PFE: "#81b29A",
-    PG: "#606c38",
-    TRV: "#005757",
-    UTX: "#ffd6e0",
+    ADBE: "#FF2D2D",
+    PG: "#A3D1D1",
+    AMZN: "#977C00",
+    ORCL: "#AE0000",
     V: "#f26845",
-    VZ: "#ef476f",
-    WMT: "#e500a4",
+    ZOOM: "#84C1FF",
+    NVDA: "#02C874",
     CSCO: "#a100f2",
-    GS: "#9c89b8",
-    JPM: "#f0a6ca",
+    BA: "#28004D",
+    GOOGL: "#FFF153",
     MSFT: "#efc3e6",
-    UNH: "#ffac81",
-    XOM: "#cdeac0"
+    SBUX: "#01814A",
+    HSY: "#600030"
 };
+var point_size = 20;
 var myColor = [];
 
 var timeFormat = 'MM/DD/YYYY' //'MM/DD/YYYY HH:mm';
@@ -86,7 +87,7 @@ function selectButton(e){
     var day_label = [];
     for(var j = 0; j < DAYNUMBER; j++){
         //day_label.push("day "+(j+1));
-        day_label.push(newDateString(j - DAYNUMBER));
+        day_label = stock_date;
     }
 
     var color = getRandomColor();
@@ -121,6 +122,8 @@ function selectButton(e){
                     });
                 }
             }
+            var myImage = new Image(point_size,point_size);
+            myImage.src = "img/best.png";
             color = getRandomColor();
             dataset.push({
                     label : "best : " + exp_best_answer.company_name,
@@ -131,6 +134,7 @@ function selectButton(e){
                     data: exp_best_answer.chart_totalMoney,
                     fill : "1",
                     yAxisID: 'y-axis-2',
+                    pointStyle: myImage,
                 });
             dataset.push({
                 label : "trend",
@@ -145,7 +149,7 @@ function selectButton(e){
             });
             for(var j = 0; j < exp_best_answer.counter; j++){
                 var myIcon = [];
-                var myImage = new Image(15,15);
+                var myImage = new Image(point_size,point_size);
                 myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
                 color = getRandomColor();
                 dataset.push({
@@ -163,12 +167,11 @@ function selectButton(e){
                 });
             } 
 
-            
             var bestLineChartData = {
                 labels: day_label,
                 datasets: dataset,
             }
-            myChart = new Chart(ctx,{
+            myChart = new Chart(ctx2,{
                 type: 'line',
                 data: bestLineChartData,
                 legend: {
@@ -190,7 +193,7 @@ function selectButton(e){
                     scales: {
                         xAxes: {
                             display: true,
-                            type: 'time',
+                            type: 'linear',
                             time: {
                                 parser: timeFormat,
                                 // round: 'day'
@@ -200,20 +203,6 @@ function selectButton(e){
                                 display: true,
                                 labelString: 'Date'
                             }
-                            // type: 'time',
-                            // distribution: 'series',
-                            // offset: true,
-                            // ticks: {
-                            //     major: {
-                            //         enabled: true,
-                            //         fontStyle: 'bold'
-                            //     },
-                            //     source: 'data',
-                            //     autoSkip: true,
-                            //     autoSkipPadding: 75,
-                            //     maxRotation: 0,
-                            //     sampleSize: 100
-                            // },
                         },
                         yAxes: [{
                             type: 'linear',
@@ -256,8 +245,9 @@ function selectButton(e){
 
             for(var j = 0; j < exp_best_answer.counter; j++){
                 var myIcon = [];
-                var myImage = new Image(15,15);
+                var myImage = new Image(point_size,point_size);
                 myImage.src = "img/" + company_name[exp_best_answer.locate[j]] + ".png";
+                
                 color = getRandomColor();
                 dataset.push({
                     label : company_name[exp_best_answer.locate[j]],
@@ -278,7 +268,7 @@ function selectButton(e){
                 labels: day_label,
                 datasets: dataset,
             }
-            myChart2 = new Chart(ctx2,{
+            myChart2 = new Chart(ctx,{
                 type: 'line',
                 data: bestLineChartData,
                 legend: {
@@ -525,31 +515,66 @@ function selectButton(e){
                 var stock_copy2 = quickSort2(stock);
                 
                 // stock_copy2.reverse();
+                var risk_list = [];
+                var risk_label = [];
+                var img_list = [];
+                risk_list.push(exp_best_answer.daily_risk);
+                var temp_img = new Image(point_size,point_size);
+                temp_img.src = "img/best.png";
+                img_list.push(temp_img);
+                for(var j = 0; j < stock_copy2.length; j++){
+                    risk_list.push(stock_copy2[j].daily_risk);
+                    var temp_img = new Image(point_size, point_size);
+                    temp_img.src = "img/" + stock_copy2[j].company_name + ".png";
+                    img_list.push(temp_img);
+                }
                 dataset = [];
                 dataset.push({
-                    label : "best : " + exp_best_answer.company_name,
+                    type: "line",
+                    label : "Daily risk line",
                     backgroundColor : "#FF0000",
                     borderColor : "#FF0000",
+                    lineTension : 0,
                     borderWidth : 1,
-                    data: [exp_best_answer.daily_risk],
+                    data: risk_list,
+                    fill: false,
+                    pointRadius: 10,
+                    pointStyle: img_list,
                 });
-                for(var j = 0; j < stock_copy.length; j++){
-                    color = getRandomColor();
-                    dataset.push({
-                        label : stock_copy2[j].company_name,
-                        backgroundColor : company_color[stock_copy2[j].company_name],
-                        borderColor : company_color[stock_copy2[j].company_name],
-                        borderWidth : 1,
-                        data: [stock_copy2[j].daily_risk],
-                    });
-                } 
+
+
+                var bar_label = [];
+                var bar_color = [];
+                var bar_data = [];
+                bar_label.push(exp_best_answer.company_name);
+                bar_color.push("#FF0000");
+                bar_data.push(exp_best_answer.daily_risk);
+                for(var j = 0; j < stock_copy2.length; j++){
+                    bar_label.push(stock_copy2[j].company_name);
+                    bar_color.push(company_color[stock_copy2[j].company_name]);
+                    bar_data.push(stock_copy2[j].daily_risk);
+                }
+
+                dataset.push({
+                    type: "bar",
+                    label : bar_label,
+                    backgroundColor : bar_color,
+                    borderColor : bar_color,
+                    borderWidth : 1,
+                    data: bar_data,
+                    // fill: false,
+                });
+                
+                risk_label.push("best");
+                for(var j = 0; j < stock_copy2.length; j++){
+                    risk_label.push(stock_copy2[j].company_name);
+                }
 
                 var barChartData = {
-                    labels: ["Daily Risk"],
+                    labels: risk_label,
                     datasets: dataset,
                 };
-                var bar_max = stock_copy2[stock_copy2.length-1].daily_risk * 1.3;
-                var bar_min = -1 * bar_max;
+
 
     
                 myChart2 = new Chart(ctx2,{
@@ -558,30 +583,23 @@ function selectButton(e){
                     options: {
                         responsive: true,
                         legend: {
-                            position: 'top',
+                            // position: 'top',
+                            display: false,
                         },
-                        scales: {
-                                xAxes: [{
-                                    display: true
-                                }],
-                                yAxes: {
-                                    type: 'linear',
-                                    display: true,
-                                    position: 'left',
-                                    ticks: {
-                                        min: bar_min,
-                                        max: bar_max,
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Positive Stock',
-                                    },
-                                    
-                                }
-                            },
+                        // scales: {
+                        //         xAxes: [{
+                        //             display: true
+                        //         }],
+                        //         yAxes: {
+                        //             type: 'linear',
+                        //             display: true,
+                        //             position: 'left',                                    
+                        //         }
+                        //     },
     
                         }
-                    });
+                    }
+                    );
 
 
             break;
@@ -589,51 +607,52 @@ function selectButton(e){
             case "COMPARE":
             show_data[0].style = "";
             show_data[1].style = "";
+
+            dataset.push({
+                label : "best 趨勢線",
+                    backgroundColor : "#000000",
+                    borderColor : "#000000",
+                    borderWidth : 1,
+                    data: exp_best_answer.y_line,
+                    pointRadius : 0,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
             dataset.push({
                 label : "best : " + exp_best_answer.company_name,
                     backgroundColor : "#FFD9EC",
                     borderColor : "#FF0000",
                     borderWidth : 3,
                     data: exp_best_answer.totalMoney,
-                    fill : false,
-                    yAxisID: 'y-axis-1',
-            });
-
-            dataset.push({
-                label : "best 趨勢線",
-                    backgroundColor : "#000000",
-                    borderColor : "#000000",
-                    borderWidth : 3,
-                    data: exp_best_answer.y_line,
-                    pointRadius : 0,
                     fill : "-1",
                     yAxisID: 'y-axis-1',
             });
 
-            color = getRandomColor();
             
             dataset.push({
-                label : "你的答案",
-                    backgroundColor : color,
-                    borderColor : color,
-                    borderWidth : 1,
-                    data: game_stock[0].totalMoney,
-                    fill : false,
-                    yAxisID: 'y-axis-1',
-            });
-
-            color = getRandomColor();
-
-            dataset.push({
                 label : "你的趨勢線",
-                    backgroundColor : color,
-                    borderColor : color,
+                    backgroundColor : "#0072E3",
+                    borderColor : "#0072E3",
                     borderWidth : 1,
                     data: game_stock[0].y_line,
                     pointRadius : 0,
+                    fill : false,
+                    yAxisID: 'y-axis-1',
+            });
+
+            dataset.push({
+                label : "你的答案",
+                    backgroundColor : "#79FF79",
+                    borderColor : "#00BB00",
+                    borderWidth : 3,
+                    data: game_stock[0].totalMoney,
                     fill : "-1",
                     yAxisID: 'y-axis-1',
             });
+
+        
+
+            
 
             
 

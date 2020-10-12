@@ -290,7 +290,11 @@ input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:b
     border-color: #9bf1ff;
     content: '\f00c';
     color:  #2f466e;
+    top: -15px;
+    left: -10px;
 }
+
+
 
 input[type="checkbox"]:focus+label:before, input[type="radio"]:focus+label:before {
     box-shadow: 0 0 0 2px #9bf1ff;
