@@ -21,6 +21,16 @@ function sortSelect(a, b){
     if(tempA == tempB) return 0;
 }
 
+function findBetter(){
+    swal.fire(
+        "恭喜", //標題 
+        "找到比系統更好的解囉！", //訊息內容(可省略)
+        "success" //圖示(可省略) success/info/warning/error/question
+        //圖示範例：https://sweetalert2.github.io/#icons
+    );
+    
+}
+
 function select(t){
     
     company_box = document.getElementsByName("company_box");
@@ -62,6 +72,20 @@ function select(t){
             temp += "<label onclick = 'select(this)' style = 'display: inline-block;' name = 'my_select' for='myCheckbox" + (select_box[j]+1) + "' value = '" + select_box[j] + "'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[select_box[j]] + ".png' /></label>\n";
         }
         your_select.innerHTML = "<label>你的選擇</label>" + temp;
+
+        var sys = document.getElementById("system_data");
+        sys.setAttribute("style", "");
+        var system_data = []
+        system_data = document.getElementsByName("systemData");
+        system_data[0].value = system_answer.trend;
+        system_data[1].value = system_answer.daily_risk;
+        var system_best = document.getElementById("system_best");
+        var tp = "";
+        for(var j = 0; j < system_answer.locate.length; j++){
+            tp += "<label style = 'display: inline-block;' name = 'system_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[system_answer.locate[j]] + ".png' /></label>\n";
+        }
+        system_best.innerHTML = "<label>系統最佳選擇</label>" + tp;
+        
         
 
         var temp = [];
@@ -97,8 +121,9 @@ function select(t){
             
         }
         if(temp[0].trend > system_answer.trend){
-            alert("恭喜你找到比系統更好的組合！");
+            findBetter();
         }
+        
         var h = document.getElementById("history_data");
         h.setAttribute("style", "");
         var history_data = []
@@ -110,7 +135,7 @@ function select(t){
         for(var j = 0; j < best_select.locate.length; j++){
             tp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select.locate[j]] + ".png' /></label>\n";
         }
-        history_best.innerHTML = "<label>世界第一選擇</label>" + tp;
+        history_best.innerHTML = "<label>社群運算最佳選擇</label>" + tp;
 
 
         var day_label = [];
@@ -144,7 +169,7 @@ function select(t){
         });
 
         dataset0.push({
-            label : "世界第一組合",
+            label : "社群運算最佳組合",
             lineTension : 0.4,
             backgroundColor : "#2828FF",
             borderColor : "#2828FF",

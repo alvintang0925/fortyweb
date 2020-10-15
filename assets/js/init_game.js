@@ -7,17 +7,19 @@ var best_select = {
     risk : 0,
     totalMoney: [],
 }
-//[10000000, 10065913.13, 10108445.8, 10137569.32, 10166443.520000001, 10213720.7, 10217486.670000002, 10242335.24, 10304711.220000003, 10321582.990000002, 10347292.96, 10387245.22, 10412791.69, 10434388.04, 10502262.61, 10513051.64, 10526505.71, 10564269.46, 10605350.73]
-//[1, 4, 15, 18, 19, 20, 21, 22]
-//13479.516270287155
-//2.3670063521461864
+//[10000000, 10028734.159999998, 10071291.959999999, 10101559.229999999, 10114813.559999999, 10143481.709999997, 10159522.69, 10186578.299999999, 10229221.92, 10241703.239999998, 10252157.139999999, 10288287.319999998, 10293777.25, 10326948.86, 10372334.159999998, 10386162.74, 10398314.389999999, 10434621.79, 10452004.329999996];
+
+//2.313431297374733 
+//10286.288219675569 
+//[0, 2, 3, 4, 10, 12, 14, 15, 18, 19, 20, 21, 22, 25] 
 var system_answer = [];
-system_answer.totalMoney = [10000000, 10028734.159999998, 10071291.959999999, 10101559.229999999, 10114813.559999999, 10143481.709999997, 10159522.69, 10186578.299999999, 10229221.92, 10241703.239999998, 10252157.139999999, 10288287.319999998, 10293777.25, 10326948.86, 10372334.159999998, 10386162.74, 10398314.389999999, 10434621.79, 10452004.329999996];
-system_answer.trend = 2.313431297374733;
-system_answer.daily_risk = 10286.288219675569;
-system_answer.data = [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0];
-system_answer.locate = [0, 2, 3, 4, 10, 12, 14, 15, 18, 19, 20, 21, 22, 25];
+system_answer.totalMoney = [10000000, 10065913.13, 10108445.8, 10137569.32, 10166443.520000001, 10213720.7, 10217486.670000002, 10242335.24, 10304711.220000003, 10321582.990000002, 10347292.96, 10387245.22, 10412791.69, 10434388.04, 10502262.61, 10513051.64, 10526505.71, 10564269.46, 10605350.73];
+system_answer.trend = 2.3670063521461864;
+system_answer.daily_risk = 13479.516270287155;
+system_answer.locate = [1, 4, 15, 18, 19, 20, 21, 22];
 //[0, 3, 4, 10, 12, 14, 15, 20, 21, 22, 25, 28]
+
+
 function useSystemBest(){
     company_box = document.getElementsByName("company_box");
     for(var j = 0; j< company_box.length; j++){
@@ -44,6 +46,20 @@ function useSystemBest(){
         temp += "<label onclick = 'select(this)' style = 'display: inline-block;' name = 'my_select' for='myCheckbox" + (select_box[j]+1) + "' value = '" + select_box[j] + "'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[select_box[j]] + ".png' /></label>\n";
     }
     your_select.innerHTML = "<label>你的選擇</label>" + temp;
+
+    var sys = document.getElementById("system_data");
+    sys.setAttribute("style", "");
+    var system_data = []
+    system_data = document.getElementsByName("systemData");
+    system_data[0].value = system_answer.trend;
+    system_data[1].value = system_answer.daily_risk;
+    var system_best = document.getElementById("system_best");
+    var tp = "";
+    for(var j = 0; j < system_answer.locate.length; j++){
+        tp += "<label style = 'display: inline-block;' name = 'system_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[system_answer.locate[j]] + ".png' /></label>\n";
+    }
+    system_best.innerHTML = "<label>系統最佳選擇</label>" + tp;
+    
     
 
     var temp = [];
@@ -80,7 +96,7 @@ function useSystemBest(){
     }
 
     if(temp[0].trend > system_answer.trend){
-        alert("恭喜你找到比系統更好的組合！");
+        findBetter();
     }
     var h = document.getElementById("history_data");
     h.setAttribute("style", "");
@@ -93,7 +109,7 @@ function useSystemBest(){
     for(var j = 0; j < best_select.locate.length; j++){
         tp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select.locate[j]] + ".png' /></label>\n";
     }
-    history_best.innerHTML = "<label>世界第一選擇</label>" + tp;
+    history_best.innerHTML = "<label>社群運算最佳選擇</label>" + tp;
 
     var day_label = [];
     for(var j = 0; j < DAYNUMBER; j++){
@@ -126,7 +142,7 @@ function useSystemBest(){
     });
 
     dataset0.push({
-        label : "世界第一組合",
+        label : "社群運算最佳組合",
         lineTension : 0.4,
         backgroundColor : "#2828FF",
         borderColor : "#2828FF",
@@ -202,6 +218,19 @@ function usePlayerBest(){
         temp += "<label onclick = 'select(this)' style = 'display: inline-block;' name = 'my_select' for='myCheckbox" + (select_box[j]+1) + "' value = '" + select_box[j] + "'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[select_box[j]] + ".png' /></label>\n";
     }
     your_select.innerHTML = "<label>你的選擇</label>" + temp;
+
+    var sys = document.getElementById("system_data");
+    sys.setAttribute("style", "");
+    var system_data = []
+    system_data = document.getElementsByName("systemData");
+    system_data[0].value = system_answer.trend;
+    system_data[1].value = system_answer.daily_risk;
+    var system_best = document.getElementById("system_best");
+    var tp = "";
+    for(var j = 0; j < system_answer.locate.length; j++){
+        tp += "<label style = 'display: inline-block;' name = 'system_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[system_answer.locate[j]] + ".png' /></label>\n";
+    }
+    system_best.innerHTML = "<label>系統最佳選擇</label>" + tp;
     
 
     var temp = [];
@@ -233,7 +262,7 @@ function usePlayerBest(){
     }
 
     if(temp[0].trend > system_answer.trend){
-        alert("恭喜你找到比系統更好的組合！");
+        findBetter();
     }
     var h = document.getElementById("history_data");
     h.setAttribute("style", "");
@@ -246,7 +275,7 @@ function usePlayerBest(){
     for(var j = 0; j < best_select.locate.length; j++){
         tp += "<label style = 'display: inline-block;' name = 'history_select'> <img style = 'width: 50px; height: 50px;' src = 'img/" + company_name[best_select.locate[j]] + ".png' /></label>\n";
     }
-    history_best.innerHTML = "<label>世界第一選擇</label>" + tp;
+    history_best.innerHTML = "<label>社群運算最佳選擇</label>" + tp;
 
     var day_label = [];
     for(var j = 0; j < DAYNUMBER; j++){
@@ -279,7 +308,7 @@ function usePlayerBest(){
     });
 
     dataset0.push({
-        label : "世界第一組合",
+        label : "社群運算最佳組合",
         lineTension : 0.4,
         backgroundColor : "#2828FF",
         borderColor : "#2828FF",
@@ -325,13 +354,33 @@ function usePlayerBest(){
     });
 }
 
-function resetPlayerBest(){
+function initPlayerBest(){
     if(window.localStorage){
         if(localStorage.best_select != undefined){
             best_select.trend = 0;
             best_select.risk = 0;
             best_select.locate = [];
             best_select.totalMoney = [];
+            localStorage.best_select = JSON.stringify(best_select);
+        }
+    }else{
+        console.log("NOT SUPPORT");
+    }
+}
+
+//[10000000, 10028734.159999998, 10071291.959999999, 10101559.229999999, 10114813.559999999, 10143481.709999997, 10159522.69, 10186578.299999999, 10229221.92, 10241703.239999998, 10252157.139999999, 10288287.319999998, 10293777.25, 10326948.86, 10372334.159999998, 10386162.74, 10398314.389999999, 10434621.79, 10452004.329999996];
+
+//2.313431297374733 
+//10286.288219675569 
+//[0, 2, 3, 4, 10, 12, 14, 15, 18, 19, 20, 21, 22, 25] 
+
+function resetPlayerBest(){
+    if(window.localStorage){
+        if(localStorage.best_select != undefined){
+            best_select.trend = 2.313431297374733;
+            best_select.risk = 10286.288219675569;
+            best_select.locate = [0, 2, 3, 4, 10, 12, 14, 15, 18, 19, 20, 21, 22, 25];
+            best_select.totalMoney = [10000000, 10028734.159999998, 10071291.959999999, 10101559.229999999, 10114813.559999999, 10143481.709999997, 10159522.69, 10186578.299999999, 10229221.92, 10241703.239999998, 10252157.139999999, 10288287.319999998, 10293777.25, 10326948.86, 10372334.159999998, 10386162.74, 10398314.389999999, 10434621.79, 10452004.329999996];
             localStorage.best_select = JSON.stringify(best_select);
         }
     }else{
