@@ -405,6 +405,7 @@ function selectButton(e){
             break;
         case "TREND & DAILY RISK":
             document.getElementById("download_img2").style = "float: right;";
+            myCanvas.setAttribute("style", "background-color:white; background-image: url(img/TREND.png); background-size: cover;")
             myCanvas2.setAttribute("style", "background-color:white; background-image: url(img/RISK.png); background-size: cover;")
             var temp = stock.slice(0);
             stock_copy = quickSort(temp);
